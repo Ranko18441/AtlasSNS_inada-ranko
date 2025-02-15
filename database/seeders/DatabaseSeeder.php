@@ -20,5 +20,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        //下記コードを追加することによって「UsersTableSeeder.php」を呼び出す。
+        $this->call([
+            UsersTableSeeder::class,
+            ]);
     }
 }
