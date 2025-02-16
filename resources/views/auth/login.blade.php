@@ -1,7 +1,8 @@
 <x-logout-layout>
 
   <!-- 適切なURLを入力してください -->
-  {!! Form::open(['url' => '〇〇']) !!}
+  {!! Form::open(['url' => 'login']) !!}
+  <!-- 初期設定がpost通信になっているので、post通信で/loginに飛ばす-->
 
   <p>AtlasSNSへようこそ</p>
 

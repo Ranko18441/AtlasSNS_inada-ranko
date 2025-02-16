@@ -28,8 +28,10 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        // ログイン中の処理
 
         return redirect()->intended('top');
+        // ログインから成功したらトップに行く処理
     }
 
 }
