@@ -29,11 +29,22 @@ class RegisteredUserController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request): RedirectResponse
+    // storeは下記を処理する記述名　飛ばしたい、名前ではない
     {
+
+        $request->validate([
+            'username' => 'required|min:2|max:10',
+            'email' =>'required|email|unique:users|min:5|max:40',
+            'password' => 'regex:/^[a-zA-Z0-9]+$/', 
+            'password' =>['required','confirmed']
+            
+        ]);
+        
         User::create([
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            
         ]);
 
         return redirect('added');
