@@ -42,16 +42,24 @@ class RegisteredUserController extends Controller
         
         User::create([
             'username' => $request->username,
+            // ↑に$request->username,で、ユーザーネームを登録したいよという処理をしている。
             'email' => $request->email,
             'password' => Hash::make($request->password),
+
             
         ]);
 
-        return redirect('added');
+        \Session::flash('username',$request->username);
+            return redirect()->route('success'); 
+            // ↑URLとROUTEの違い方を調べる。　routeの中にルート名を指定する。returnは一つのメソッドにつき、基本一つ。
+            // 呼び出しているが、ルート名がないので、ルートサクセスがないと言われる。
+
     }
 
     public function added(): View
     {
+        
         return view('auth.added');
+        
     }
 }

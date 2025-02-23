@@ -21,7 +21,7 @@
 <p><a href="login">ログイン画面へ戻る</a></p>
 
 {!! Form::close() !!}
-
+<!-- バリデーションチェックに引っかかった場合、エラーを出させるために下記を記述 -->
 @if($errors->any())
         <div class="alert alert-danger"><ul>
             @foreach($errors->all() as $error)
