@@ -53,6 +53,7 @@ class RegisteredUserController extends Controller
             return redirect()->route('success'); 
             // ↑URLとROUTEの違い方を調べる。　routeの中にルート名を指定する。returnは一つのメソッドにつき、基本一つ。
             // 呼び出しているが、ルート名がないので、ルートサクセスがないと言われる。
+            // キー（変数）と値（バリュー）　
 
     }
 

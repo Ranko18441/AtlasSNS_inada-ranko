@@ -36,4 +36,6 @@ class AuthenticatedSessionController extends Controller
         // ログインから成功したらトップに行く処理
     }
 
+
+
 }
