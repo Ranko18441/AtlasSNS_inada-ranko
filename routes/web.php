@@ -17,8 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 require __DIR__ . '/auth.php';
+// 全てのルーティングをこのphpに書いてよいので、auth.phpに記載したファイルを読み込んでいる。
+// 現在のスクリプトと同じディレクトリにある auth.php ファイルを読み込むという意味です。これによって、auth.php ファイルに定義されている関数、クラス、変数などが、現在のスクリプト内で利用できるようになります。
 Route::middleware('auth')->group(function () {
-Route::get('top', [PostsController::class, 'index']);
+Route::get('top', [PostsController::class, 'index'])->name("top");
 Route::get('profile', [ProfileController::class, 'profile']);
 Route::get('search', [UsersController::class, 'index']);
 Route::get('follow-list', [PostsController::class, 'index']);
