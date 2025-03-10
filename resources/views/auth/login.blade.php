@@ -18,3 +18,4 @@
   {!! Form::close() !!}
 
 </x-logout-layout>
+
