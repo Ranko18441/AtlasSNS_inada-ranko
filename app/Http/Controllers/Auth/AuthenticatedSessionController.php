@@ -38,5 +38,17 @@ class AuthenticatedSessionController extends Controller
     }
 
 
+    //ログアウト機能を記載
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login');
+
+    }
+
+    //ログイン画面に行くようにする
+
+
+
+
 
 }

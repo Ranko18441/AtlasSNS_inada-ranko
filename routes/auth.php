@@ -22,4 +22,5 @@ Route::middleware('guest')->group(function () {
     // １つのルーティングに対してのname属性は一つだけ　success名というname（ルート名ですよ）という意味
    
 
+    
 });
