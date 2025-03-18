@@ -24,7 +24,8 @@ Route::middleware('auth')->group(function () {
 Route::get('top', [PostsController::class, 'index'])->name("top");
 
 Route::get('profile', [ProfileController::class, 'profile'])->name("profile");
-Route::get('search', [UsersController::class, 'index']);
+Route::get('search', [UsersController::class, 'search'])->name("search");
+//UsersControllerのクラスの名まえをみたらsearchだったのでindexからsearchに変更済み
 Route::get('follow-list', [PostsController::class, 'index'])->name("followlist");
 Route::get('follower-list', [PostsController::class, 'index'])->name("follow");
 //ログアウト機能を追加で実施
