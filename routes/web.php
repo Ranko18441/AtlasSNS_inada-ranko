@@ -3,7 +3,10 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\FollowsController;
+// FollowsControllerを使うために追記
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +29,12 @@ Route::get('top', [PostsController::class, 'index'])->name("top");
 Route::get('profile', [ProfileController::class, 'profile'])->name("profile");
 Route::get('search', [UsersController::class, 'search'])->name("search");
 //UsersControllerのクラスの名まえをみたらsearchだったのでindexからsearchに変更済み
-Route::get('follow-list', [PostsController::class, 'index'])->name("followlist");
-Route::get('follower-list', [PostsController::class, 'index'])->name("follow");
+Route::get('follow-list', [FollowsController::class, 'followList'])->name("followlist");
+Route::get('follower-list', [FollowsController::class, 'followerList'])->name("follow");
 //ログアウト機能を追加で実施
 Route::get('logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
+//下記はポスト投稿機能を設置するためのルーティング
+Route::get('post', [PostsController::class, 'index'])->name("post");
 
 });
 
