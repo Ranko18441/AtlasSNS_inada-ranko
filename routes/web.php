@@ -34,7 +34,7 @@ Route::get('follower-list', [FollowsController::class, 'followerList'])->name("f
 //ログアウト機能を追加で実施
 Route::get('logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
 //下記はポスト投稿機能を設置するためのルーティング
-Route::get('post', [PostsController::class, 'index'])->name("post");
+Route::post('post', [PostsController::class, 'postcreate'])->name("post");
 
 });
 

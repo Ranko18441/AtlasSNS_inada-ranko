@@ -41,12 +41,13 @@ header{
     height: 40px;
     border: solid 3px #333;
     border-width: 0 0 3px 3px;
-    transform: rotate(45deg); /* 初期の矢印の形 */
+    transform: rotate(135deg); /* 初期の矢印の形 */
     transition: transform 0.3s ease-in-out;
+    display: block;
 }
 
 .menu-btn.show::before {
-    transform: rotate(-135deg); /* クリック時に反転する矢印 */
+    transform: rotate(-225deg); /* クリック時に反転する矢印 */
 }
 
   
