@@ -95,6 +95,62 @@ header{
     padding: 30;
     list-style: none;
   }
+
+
+
+  
+/* 4/1　追記　モーダルのスタイル */
+.modal-main{ /* ① */
+  display: none;
+  text-align:center;
+}
+.modal-inner { /* ② */
+  display: flex;
+  justify-content: center;
+  text-align:center;
+  width: 50%;
+  height: 50%;
+  background-color: #ffffff;
+  color: #666666;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.inner-content{ /* ③ */
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  max-width: 1024px;
+}
+.modal-inner img{ /* ④ */
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+.inner-title{ /* ⑤ */
+  margin-top: 40px;
+  margin-bottom: 32px;
+  font-size: 2.8rem;
+  font-weight: bold;
+}
+.inner-text{ /* ⑥ */
+  font-size: 1.6rem;
+  width: 70%;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.modalClose{ /* ⑦ */
+  cursor: pointer;
+}
+#cakelife .send-button {
+  background-color: #f63001;
+  color: #fff;
+}
+#cakelife .send-button:hover {
+  background-color: #ff5a33;
+}
   
 
 

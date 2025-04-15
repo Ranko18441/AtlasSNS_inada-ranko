@@ -12,7 +12,9 @@ class PostsController extends Controller
     public function index()
       {
         $auths = Auth::user();
-        return view('posts.index',compact('auths'));
+        // 投稿内容を取得（新しい順に並べる）
+        $posts = Post::latest()->with('user')->get(); // `with('user')`を追加すると、ユーザー情報も一緒に取得できる
+        return view('posts.index',compact('auths', 'posts'));
 
     }
     public function postcreate(Request $request) // $requestを引数として追加
@@ -30,7 +32,37 @@ class PostsController extends Controller
     ]);
 
 
-        // 成功メッセージを持って、一覧ページにリダイレクト
-        return redirect()->route('post')->with('success', 'ポストが作成されました！');
+        // 一覧ページにリダイレクト　その場所がtopだからtopに行くようにする
+        return redirect()->route('top');
     }
-}
+
+    // 編集したものを更新するための記述　フォームなどから送られてきたデータを $request で受け取ります。
+    public function postupdate(Request $request)
+      {
+        // dd('ここまで届いてるよ！', $request->all());
+        // 値がきちんと送られているかを確認するためにデバック関数を記載。
+         // バリデーションの実行
+        $validated = $request->validate([
+            'post' => 'required|min:1|max:150', // ポスト内容が1文字以上150文字以内であること
+            'post_id' => 'required|integer|exists:posts,id',
+        ]);
+         // 一つのメソッドの後には;をつける
+       
+         // 投稿モデルを取得
+         $post = Post::find($validated['post_id']);
+     // 投稿内容を更新
+         $post->post = $validated['post'];
+         $post->save();
+         return redirect()->route('top');
+        }
+    }
+    
+    
+
+         
+         
+      
+          // トップページにリダイレクト
+         // バリデーション
+    
+

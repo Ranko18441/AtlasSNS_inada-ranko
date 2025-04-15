@@ -36,6 +36,8 @@ Route::get('logout', [AuthenticatedSessionController::class, 'logout'])->name('l
 //下記はポスト投稿機能を設置するためのルーティング
 Route::post('post', [PostsController::class, 'postcreate'])->name("post");
 
+Route::post('postupdate', [PostsController::class, 'postupdate'])->name("postupdate");
+
 });
 
 

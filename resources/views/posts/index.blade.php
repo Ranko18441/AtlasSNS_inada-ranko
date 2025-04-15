@@ -29,4 +29,63 @@
         </ul>
     </div>
 @endif
-</x-login-layout>
+
+
+ <!-- 投稿内容一覧の表示 -->
+  @foreach ($posts as $post)
+  <!-- $postsの中には、postテーブルの中のid、postid~からのすべてのテーブル中の情報全部を送っている -->
+    <div class="post">
+        <!-- ユーザーのアイコン表示 -->
+        @if ($post->user->profile_image)
+            <img src="{{ asset('storage/'.$post->user->profile_image) }}" alt="ユーザーアイコン" width="50" height="50">
+        @else
+            <img src="images/icon1.png" width="32" height="32">
+        @endif
+        
+        <div class="post-content">
+            <p><strong>{{ $post->user->name }}</strong>さんの投稿</p>
+            <p>{{ $post->post }}</p>
+
+
+            <!-- モーダルの初期の画面-->
+            `<div class="modal-type">`
+                `<a href="" class="modalopen" data-target="modal01" post="{{$post->post}}" post_id="{{$post->id}}" value="{{ $post->post }}">
+                    <!-- 上の記述は post="{{$post->post}}" post_id="{{$post->id}}"にジャバスクリプトに投げる　表示させる-->
+                    <img src="images/edit.png"  alt="Edit Icon" width="32" height="32">
+                    `</a>`
+            </div>
+            <!-- モーダルの中身-->            
+            <div class="modal-main js-modal" id="modal01"><!-- ① -->
+              <div class="modal-inner"><!-- ② -->
+                <div class="inner-content">
+                  <p class="inner-title"></p>
+
+                  <!-- 同じidは一つのページに一つしか使えない -->
+                  <form action="{{ route('postupdate')}}" method="POST">
+                  @csrf <!-- CSRFトークンを追加 -->
+                      <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
+                      <textarea name="post" id="modal-textarea"></textarea>
+                      <button type="submit" class="send-button modalClose">
+                        <!-- 編集フォーム ボタン-->
+                          <img src="images/edit.png" alt="Edit Icon" width="32" height="32">
+                        </button>
+                  </form>
+
+
+                  
+            </div>
+          </div>
+        </div>
+                
+        <!-- jQuery -->
+        <p><small>{{ $post->created_at->format('Y-m-d H:i:s') }}</small></p> <!-- 投稿日時を表示 -->
+    
+                
+            </div>
+        </div>
+      @endforeach
+    
+    </x-login-layout>
+
+  
+    

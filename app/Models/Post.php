@@ -14,6 +14,12 @@ class Post extends Model
         'post',  // フィールド名
         'user_id', // ユーザーID
     ];
+
+    // ユーザーとのリレーションを定義
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
 
 

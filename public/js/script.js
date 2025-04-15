@@ -24,3 +24,36 @@ $(document).ready(function() {
 // });
 
 
+// モーダル部分
+$(function () { //①
+  $('.modalopen').each(function () {
+    $(this).on('click', function () {
+  
+      var target = $(this).data('target');
+      var modal = document.getElementById(target);
+      var content = $(this).data('content'); // クリックしたボタンの投稿内容
+      var post = $(this).attr('post');
+      var postId = $(this).attr('post_id'); // 編集する投稿のID
+
+      // モーダルを開き、投稿内容を表示
+      $(modal).fadeIn();
+      // 投稿内容をモーダルのtextareaに表示
+      $('#modal-textarea').val(post);
+      // 投稿IDを隠しフィールドに設定
+      $('#post_id').val(postId);
+
+      return false;
+    });
+  });
+
+  // フォームを送信しつつモーダルを閉じる
+  $('.modalCloseBtnOnly').on('click', function () {
+    $(this).closest('.js-modal').fadeOut();
+  });
+
+});
+
+
+
+
+
