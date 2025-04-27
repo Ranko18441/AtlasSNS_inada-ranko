@@ -55,6 +55,13 @@ class PostsController extends Controller
          $post->save();
          return redirect()->route('top');
         }
+
+        public function postdelete($id)
+    {
+        Post::where('id', $id)->delete();
+        return redirect('/top');
+    }
+    
     }
     
     

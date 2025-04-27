@@ -47,34 +47,77 @@
             <p>{{ $post->post }}</p>
 
 
-            <!-- モーダルの初期の画面-->
-            `<div class="modal-type">`
-                `<a href="" class="modalopen" data-target="modal01" post="{{$post->post}}" post_id="{{$post->id}}" value="{{ $post->post }}">
-                    <!-- 上の記述は post="{{$post->post}}" post_id="{{$post->id}}"にジャバスクリプトに投げる　表示させる-->
-                    <img src="images/edit.png"  alt="Edit Icon" width="32" height="32">
-                    `</a>`
-            </div>
-            <!-- モーダルの中身-->            
-            <div class="modal-main js-modal" id="modal01"><!-- ① -->
-              <div class="modal-inner"><!-- ② -->
-                <div class="inner-content">
-                  <p class="inner-title"></p>
+            <!-- 投稿の時のモーダルの初期の画面-->
+            <!-- <div class="modal-type">
+                <a href="" class="modalopen" data-target="edit-modal-{{ $post->id }}" post="{{$post->post}}" post_id="{{$post->id}}" value="{{ $post->post }}">
+                    上の記述は post="{{$post->post}}" post_id="{{$post->id}}"にジャバスクリプトに投げる　表示させる-->
+                    <!-- <img src="images/edit.png"  alt="Edit Icon" width="32" height="32">
+                    </a>
+            </div> --> 
 
-                  <!-- 同じidは一つのページに一つしか使えない -->
-                  <form action="{{ route('postupdate')}}" method="POST">
-                  @csrf <!-- CSRFトークンを追加 -->
-                      <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
-                      <textarea name="post" id="modal-textarea"></textarea>
-                      <button type="submit" class="send-button modalClose">
-                        <!-- 編集フォーム ボタン-->
+            <!-- 編集ボタン -->
+            <a href="#" class="modalopen"
+               data-target="edit-modal-{{ $post->id }}"
+               data-post="{{ $post->post }}"
+               data-post-id="{{ $post->id }}">
+              <img src="images/edit.png" alt="Edit Icon" width="32" height="32">
+            </a>
+            
+
+
+
+            <!-- 削除の時のモーダルの初期の画面-->
+            <div class="modal-type">
+                <a href="" class="modalopen delete-btn" data-target="delete-modal-{{ $post->id }}" post="{{$post->post}}">
+                    <img src="images/trash-h.png" alt="Trash Icon" width="32" height="32">
+                    </a>
+            </div>
+
+            <!-- 投稿の時のモーダルの中身            
+            <div class="modal-main js-modal" id="edit-modal-{{ $post->id }}">① -->
+              <!-- <div class="modal-inner">② -->
+                <!-- <div class="inner-content">
+                  <p class="inner-title"></p> --> 
+                   <!-- モーダル本体 -->
+                  <div class="modal-main js-modal" id="edit-modal-{{ $post->id }}">
+                    <div class="modal-inner">
+                      <form action="{{ route('postupdate') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="post_id" class="modal-post-id" value="{{ $post->id }}">
+                        <textarea name="post" class="modal-textarea"></textarea>
+                        <button type="submit">
                           <img src="images/edit.png" alt="Edit Icon" width="32" height="32">
                         </button>
+                      </form>
+                    </div>
+                  </div>
+               
+                 <!-- 同じidは一つのページに一つしか使えない -->
+                  <form action="{{ route('postupdate')}}" method="POST">
+                  @csrf <!-- CSRFトークンを追加 -->
+                      <input type="hidden" name="post_id" class="modal-post-id" value="{{ $post->id }}">
+                      <textarea name="post" id="modal-textarea"></textarea>
+                      
                   </form>
+                </div>
+              </div>
 
-
-                  
-            </div>
-          </div>
+              <!-- 削除の時のモーダルの中身--> 
+              <div class="modal-main js-modal" id="delete-modal-{{ $post->id }}">
+                <div class="modal-inner">
+                  <div class="inner-content">
+                    <p>この投稿を削除します。よろしいでしょうか？</p>
+                    <form action="{{ route('postdelete', ['id' => $post->id]) }}" method="post">
+                      @csrf
+                      @method('DELETE') <!-- LaravelでDELETEリクエストを送る -->
+                      <button type="submit" class="send-button modalClose">
+                        <!-- 削除フォーム ボタン-->
+                        <img src="images/trash-h.png" alt="Trash Icon" width="32" height="32"> 削除する
+                      </button>
+                    </form>
+                    <button class="modalCloseBtnOnly">キャンセル</button>
+                  </div>
+                </div>
         </div>
                 
         <!-- jQuery -->

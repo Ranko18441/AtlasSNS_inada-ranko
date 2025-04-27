@@ -102,7 +102,16 @@ header{
 /* 4/1　追記　モーダルのスタイル */
 .modal-main{ /* ① */
   display: none;
-  text-align:center;
+  /* 下記は4/27にモーダルを削除するために追加 */
+  position: fixed;       /* ←画面全体に固定 */
+  top: 0;
+  left: 0;
+  width: 100vw;          /* ←画面いっぱいに広げる */
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* ←暗い背景でクリックしやすく */
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
 }
 .modal-inner { /* ② */
   display: flex;
@@ -150,6 +159,17 @@ header{
 }
 #cakelife .send-button:hover {
   background-color: #ff5a33;
+}
+
+
+
+/* 削除ボタンを押した時のモーダル */
+
+.delete-btn:hover {
+  content: url("/images/trash.png");
+  width: 32px;
+  height: 32px;
+  
 }
   
 
