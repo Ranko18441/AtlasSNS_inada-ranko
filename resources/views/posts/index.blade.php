@@ -63,9 +63,6 @@
               <img src="images/edit.png" alt="Edit Icon" width="32" height="32">
             </a>
             
-
-
-
             <!-- 削除の時のモーダルの初期の画面-->
             <div class="modal-type">
                 <a href="" class="modalopen delete-btn" data-target="delete-modal-{{ $post->id }}" post="{{$post->post}}">
@@ -73,12 +70,15 @@
                     </a>
             </div>
 
+
+
+
             <!-- 投稿の時のモーダルの中身            
             <div class="modal-main js-modal" id="edit-modal-{{ $post->id }}">① -->
               <!-- <div class="modal-inner">② -->
                 <!-- <div class="inner-content">
                   <p class="inner-title"></p> --> 
-                   <!-- モーダル本体 -->
+                   <!-- 編集の時のモーダル本体 -->
                   <div class="modal-main js-modal" id="edit-modal-{{ $post->id }}">
                     <div class="modal-inner">
                       <form action="{{ route('postupdate') }}" method="POST">
@@ -93,42 +93,35 @@
                   </div>
                
                  <!-- 同じidは一つのページに一つしか使えない -->
-                  <form action="{{ route('postupdate')}}" method="POST">
-                  @csrf <!-- CSRFトークンを追加 -->
-                      <input type="hidden" name="post_id" class="modal-post-id" value="{{ $post->id }}">
-                      <textarea name="post" id="modal-textarea"></textarea>
-                      
-                  </form>
-                </div>
-              </div>
-
-              <!-- 削除の時のモーダルの中身--> 
-              <div class="modal-main js-modal" id="delete-modal-{{ $post->id }}">
-                <div class="modal-inner">
-                  <div class="inner-content">
-                    <p>この投稿を削除します。よろしいでしょうか？</p>
-                    <form action="{{ route('postdelete', ['id' => $post->id]) }}" method="post">
-                      @csrf
-                      @method('DELETE') <!-- LaravelでDELETEリクエストを送る -->
-                      <button type="submit" class="send-button modalClose">
-                        <!-- 削除フォーム ボタン-->
-                        <img src="images/trash-h.png" alt="Trash Icon" width="32" height="32"> 削除する
-                      </button>
-                    </form>
-                    <button class="modalCloseBtnOnly">キャンセル</button>
+                 <!-- 削除の時のモーダルの中身--> 
+                 <div class="modal-main js-modal" id="delete-modal-{{ $post->id }}">
+                   <div class="modal-inner">
+                     <div class="inner-content">
+                       <p>この投稿を削除します。よろしいでしょうか？</p>
+                       <form action="{{ route('postdelete', ['id' => $post->id]) }}" method="post">
+                         @csrf
+                         @method('DELETE') <!-- LaravelでDELETEリクエストを送る -->
+                         <button type="submit" class="send-button modalClose">
+                           <!-- 削除フォーム ボタン-->
+                           <img src="images/trash-h.png" alt="Trash Icon" width="32" height="32"> 削除する
+                         </button>
+                       </form>
+                       <button class="modalCloseBtnOnly">キャンセル</button>
+                     </div>
+                   </div>
                   </div>
+                  
+                  <!-- jQuery -->
+                  <p><small>{{ $post->created_at->format('Y-m-d H:i:s') }}</small></p> <!-- 投稿日時を表示 -->
                 </div>
-        </div>
-                
-        <!-- jQuery -->
-        <p><small>{{ $post->created_at->format('Y-m-d H:i:s') }}</small></p> <!-- 投稿日時を表示 -->
-    
-                
             </div>
-        </div>
-      @endforeach
+          @endforeach
+        
+        </x-login-layout>
+
+                
     
-    </x-login-layout>
+                
 
   
     
