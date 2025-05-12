@@ -28,6 +28,7 @@ Route::get('top', [PostsController::class, 'index'])->name("top");
 
 Route::get('profile', [ProfileController::class, 'profile'])->name("profile");
 Route::get('search', [UsersController::class, 'search'])->name("search");
+Route::get('search', [UsersController::class, 'usersearch'])->name("search");
 //UsersControllerのクラスの名まえをみたらsearchだったのでindexからsearchに変更済み
 Route::get('follow-list', [FollowsController::class, 'followList'])->name("followlist");
 Route::get('follower-list', [FollowsController::class, 'followerList'])->name("follow");
