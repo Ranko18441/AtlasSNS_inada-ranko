@@ -27,11 +27,17 @@ Route::middleware('auth')->group(function () {
 Route::get('top', [PostsController::class, 'index'])->name("top");
 
 Route::get('profile', [ProfileController::class, 'profile'])->name("profile");
+//プロフィール閲覧で使用するユーザー情報の取得
+Route::get('/profile/{id}',[ProfileController::class,'get_user']);
 Route::get('search', [UsersController::class, 'search'])->name("search");
 Route::get('search', [UsersController::class, 'usersearch'])->name("search");
 //UsersControllerのクラスの名まえをみたらsearchだったのでindexからsearchに変更済み
 Route::get('follow-list', [FollowsController::class, 'followList'])->name("followlist");
 Route::get('follower-list', [FollowsController::class, 'followerList'])->name("follow");
+//フォロー付与
+Route::post('/follow/{id}/add',[FollowsController::class,'following'])->name("follows");
+//フォロー解除
+Route::post('/follow/remove',[FollowsController::class,'unfollowing'])->name("unfollows");
 //ログアウト機能を追加で実施
 Route::get('logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
 //下記はポスト投稿機能を設置するためのルーティング
