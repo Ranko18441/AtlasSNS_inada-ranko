@@ -38,6 +38,8 @@ Route::get('follower-list', [FollowsController::class, 'followerList'])->name("f
 Route::post('/follow/{id}/add',[FollowsController::class,'following'])->name("follows");
 //フォロー解除
 Route::post('/follow/remove',[FollowsController::class,'unfollowing'])->name("unfollows");
+// フォロー覧
+Route::get('follow-list', [FollowsController::class, 'showFollowingList'])->name("followlist");
 //ログアウト機能を追加で実施
 Route::get('logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
 //下記はポスト投稿機能を設置するためのルーティング

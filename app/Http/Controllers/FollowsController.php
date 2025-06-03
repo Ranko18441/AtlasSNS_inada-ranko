@@ -21,6 +21,7 @@ class FollowsController extends Controller
     //フォローする(中間テーブルをインサート)
     public function following(Request $request, $id){
 
+        // idだと直接受け取れる。
         //自分がフォローしているかどうか検索
         $exists = Follow::where('following_id', Auth::id())->where('followed_id', $id)->exists();
 
@@ -49,4 +50,14 @@ class FollowsController extends Controller
     }
 
 
+// 自分がフォローしているユーザーのアイコンをあらわすためのもの
+public function showFollowingList(Request $request)
+{
+    $user = Auth::user();
+    // 現在ログインしているユーザーを取得 
+
+    // フォローしているユーザーの情報を取得
+     $followsList = $user->following()->get();
+     return view('follows.followList', compact('followsList'));
+}
 }
