@@ -40,6 +40,10 @@ Route::post('/follow/{id}/add',[FollowsController::class,'following'])->name("fo
 Route::post('/follow/remove',[FollowsController::class,'unfollowing'])->name("unfollows");
 // フォロー覧
 Route::get('follow-list', [FollowsController::class, 'showFollowingList'])->name("followlist");
+
+// フォロワー覧
+Route::get('follower-list', [FollowsController::class, 'showFollower'])->name("follow");
+
 //ログアウト機能を追加で実施
 Route::get('logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
 //下記はポスト投稿機能を設置するためのルーティング

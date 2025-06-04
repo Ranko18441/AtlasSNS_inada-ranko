@@ -58,6 +58,20 @@ public function showFollowingList(Request $request)
 
     // フォローしているユーザーの情報を取得
      $followsList = $user->following()->get();
+    //  followingは関数　user.phpで定義したメソッドのことを指している。->はその前のものから引っ張ってくるというもの
      return view('follows.followList', compact('followsList'));
 }
+
+// フォロワーのユーザーのアイコンを表すためのもの
+public function showFollower(Request $request)
+{
+    $user = Auth::user();
+    // 現在ログインしているユーザーを取得 
+
+    // フォローしているユーザーの情報を取得
+     $followerList = $user->followed()->get();
+    //  followingは関数　user.phpで定義したメソッドのことを指している。->はその前のものから引っ張ってくるというもの
+     return view('follows.followerList', compact('followerList'));
+}
+
 }

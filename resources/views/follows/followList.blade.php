@@ -9,7 +9,7 @@
     <ul>
         @foreach ($followsList as $following)
             <li><img src="{{ asset('images/' . $following->icon_image) }}" alt="アイコン">
-                <span>{{ $following->name }}</span>
+            <span>{{ $following->username }}</span>
             </li>
         @endforeach
     </ul>
@@ -19,4 +19,4 @@
     </x-login-layout>
 
     <!-- どうしても変数を使いたいというときは、コンパクト関数にいれたものを使う　followsList　asの左側に入れたものはコンパクト関数と一致していないといけない 
-    $followsList as $followingは followsListを-followingという変数に直したっていうだけ->
+    $followsList as $followingは followsListを-followingっていう一人筒確認していく作業　複数形as単数->
