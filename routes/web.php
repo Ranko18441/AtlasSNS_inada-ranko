@@ -38,9 +38,6 @@ Route::get('follower-list', [FollowsController::class, 'followerList'])->name("f
 Route::post('/follow/{id}/add',[FollowsController::class,'following'])->name("follows");
 //フォロー解除
 Route::post('/follow/remove',[FollowsController::class,'unfollowing'])->name("unfollows");
-// フォロー覧
-Route::get('follow-list', [FollowsController::class, 'showFollowingList'])->name("followlist");
-
 // フォロワー覧
 Route::get('follower-list', [FollowsController::class, 'showFollower'])->name("follow");
 

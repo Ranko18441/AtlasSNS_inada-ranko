@@ -5,13 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Follow;//Followモデルをインポート
 use Illuminate\Support\Facades\Auth; // Authファサードを読み込む
+use App\Models\Post;
+
 
 class FollowsController extends Controller
 {
     //
-    public function followList(){
-        return view('follows.followList');
-    }
+    public function followList()
+{
+    // 現在ログインしているユーザーを取得
+    $user = Auth::user();
+    $followsList = $user->following()->get();
+    // フォローしているユーザーのIDを取得
+    $following_id = Auth::user()->following()->pluck('followed_id');
+    // フォローしているユーザーの投稿を取得
+    $posts = Post::with('user')->whereIn('user_id', $following_id)->get();
+    // ビューに投稿データを渡す
+    return view('follows.followList', compact('posts', 'followsList', 'following_id'));
+}
+
+
+
     public function followerList(){
         return view('follows.followerList');
     }
@@ -48,19 +62,6 @@ class FollowsController extends Controller
         // フォロー時と同様に、検索ワード付きで検索画面に戻す
     return redirect()->route('search', ['search' => $request->input('search')]);
     }
-
-
-// 自分がフォローしているユーザーのアイコンをあらわすためのもの
-public function showFollowingList(Request $request)
-{
-    $user = Auth::user();
-    // 現在ログインしているユーザーを取得 
-
-    // フォローしているユーザーの情報を取得
-     $followsList = $user->following()->get();
-    //  followingは関数　user.phpで定義したメソッドのことを指している。->はその前のものから引っ張ってくるというもの
-     return view('follows.followList', compact('followsList'));
-}
 
 // フォロワーのユーザーのアイコンを表すためのもの
 public function showFollower(Request $request)

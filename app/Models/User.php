@@ -46,6 +46,8 @@ class User extends Authenticatable
         
     }
 
+    // following_id 私のID  followed_idは相手のID 
+
     //フォローされているユーザー
     public function followed()
     {
