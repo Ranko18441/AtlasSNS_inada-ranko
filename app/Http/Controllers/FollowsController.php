@@ -25,10 +25,22 @@ class FollowsController extends Controller
 }
 
 
+   // フォロワーのユーザーのアイコンを表すためのもの
+    public function followerList()
+    {
+    // 現在ログインしているユーザーを取得
+    $user = Auth::user();
+    // フォロワーのユーザーのIDを取得
+     $followerList = $user->followed()->get();
+     
+     // フォロワーユーザーの投稿を取得
+    $followed_id = Auth::user()->followed()->pluck('following_id');
+    // フォロワーの投稿を取得
+    $posts = Post::with('user')->whereIn('user_id', $followed_id)->get();
+    //  followingは関数　user.phpで定義したメソッドのことを指している。->はその前のものから引っ張ってくるというもの
+     return view('follows.followerList', compact('posts','followerList','followed_id'));
+}
 
-    public function followerList(){
-        return view('follows.followerList');
-    }
     
     
     
@@ -63,16 +75,5 @@ class FollowsController extends Controller
     return redirect()->route('search', ['search' => $request->input('search')]);
     }
 
-// フォロワーのユーザーのアイコンを表すためのもの
-public function showFollower(Request $request)
-{
-    $user = Auth::user();
-    // 現在ログインしているユーザーを取得 
-
-    // フォローしているユーザーの情報を取得
-     $followerList = $user->followed()->get();
-    //  followingは関数　user.phpで定義したメソッドのことを指している。->はその前のものから引っ張ってくるというもの
-     return view('follows.followerList', compact('followerList'));
-}
 
 }

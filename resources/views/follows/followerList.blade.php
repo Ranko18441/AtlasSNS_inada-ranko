@@ -15,4 +15,16 @@
     </ul>
     @endif
 
+    @if(isset( $posts ))
+    @foreach ($posts as $post)
+        <div>
+            <p>名前：{{ $post->user->username }}</p>
+            <p>投稿内容：{{ $post->post }}</p>
+        </div>
+    @endforeach
+    
+    @else
+        <p>投稿はありません。</p>
+    @endif
+
 </x-login-layout>

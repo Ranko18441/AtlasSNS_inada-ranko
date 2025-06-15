@@ -33,13 +33,13 @@ Route::get('search', [UsersController::class, 'search'])->name("search");
 Route::get('search', [UsersController::class, 'usersearch'])->name("search");
 //UsersControllerのクラスの名まえをみたらsearchだったのでindexからsearchに変更済み
 Route::get('follow-list', [FollowsController::class, 'followList'])->name("followlist");
+// フォロワー覧
 Route::get('follower-list', [FollowsController::class, 'followerList'])->name("follow");
 //フォロー付与
 Route::post('/follow/{id}/add',[FollowsController::class,'following'])->name("follows");
 //フォロー解除
 Route::post('/follow/remove',[FollowsController::class,'unfollowing'])->name("unfollows");
-// フォロワー覧
-Route::get('follower-list', [FollowsController::class, 'showFollower'])->name("follow");
+
 
 //ログアウト機能を追加で実施
 Route::get('logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
