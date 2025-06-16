@@ -13,7 +13,10 @@ use App\Models\User;//登録ユーザーのDBを使用
 class ProfileController extends Controller
 {
     public function profile(){
-        return view('profiles.profile');
+         // 認証済みユーザーの情報を取得
+        $user = Auth::user();
+        return view('profiles.profile',compact('user'));
+    
     }
 
     public function get_user($user_id){

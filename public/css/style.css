@@ -172,6 +172,11 @@ header{
   
 }
 
+/*プロフィールページのところ プロフィールの欄を中央にするためのcss */
+.profiletitle {
+  text-align: center;
+}
+
 
   
 

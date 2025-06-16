@@ -19,6 +19,7 @@
     @if(isset( $posts ))
     @foreach ($posts as $post)
         <div>
+        <li><img src="{{ asset('images/' . $following->icon_image) }}" alt="アイコン">
             <p>名前：{{ $post->user->username }}</p>
             <p>投稿内容：{{ $post->post }}</p>
         </div>

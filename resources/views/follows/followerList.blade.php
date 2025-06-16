@@ -18,6 +18,8 @@
     @if(isset( $posts ))
     @foreach ($posts as $post)
         <div>
+        <li><img src="{{ asset('images/' . $follower->icon_image) }}" alt="アイコン">
+        <!-- 結合演算子 （けつごうえんざんし）　変数と文字列をつなげたいときに持ってくるやり方　変数のものをイメージと繋げる-->
             <p>名前：{{ $post->user->username }}</p>
             <p>投稿内容：{{ $post->post }}</p>
         </div>
