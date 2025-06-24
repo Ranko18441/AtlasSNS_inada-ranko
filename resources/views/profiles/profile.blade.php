@@ -3,7 +3,7 @@
 <!-- お名前のところ -->
  
  <div class="profiletitle">
-<form method="post" action="">
+<form method="post" action="{{ route('profile') }}">
 	@csrf
     @if ($user->profile_image)
             <img src="{{ asset('storage/'.$user->profile_image) }}" alt="ユーザーアイコン" width="50" height="50">
@@ -12,11 +12,12 @@
         @endif
    <label for="name">ユーザー名</label>
 	<div>
-	 <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}" />
+	 <input type="text" name="name" id="name" value="{{ old('name', $user->username) }}" />
 	</div>
+    
 	<label>メールアドレス</label>
 	<div>
-		<input type="text" name="title" value="{{ old('title') }}" />
+		<input type="email" name="email" id="email" value="{{ old('email', $user->email) }}" />
 	</div>
 	
     <label for="password">パスワード</label>
@@ -29,9 +30,9 @@
     <input type="password" id="password_confirmation" name="password_confirmation">
     </div>
     
-    <label>自己紹介</label>
+    <label for="bio">自己紹介（任意）</label>
     <div>
-		<input type="text" name="title" value="{{ old('title') }}" />
+		<input type="text" name="bio" id="bio" value="{{ old('bio', $user->bio ?? '') }}" />
 	</div>
     <label>アイコン画像</label>
 	<div>

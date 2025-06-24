@@ -15,7 +15,10 @@ class ProfileController extends Controller
     public function profile(){
          // 認証済みユーザーの情報を取得
         $user = Auth::user();
-        return view('profiles.profile',compact('user'));
+        $bio = $user->bio;
+
+        return view('profiles.profile',compact('user', 'bio'));
+
     
     }
 
@@ -32,4 +35,7 @@ class ProfileController extends Controller
         'isFollowing' => $isFollowing
     ]);
     }
+    
+
+    
 }
