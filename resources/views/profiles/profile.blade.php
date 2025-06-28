@@ -3,7 +3,7 @@
 <!-- お名前のところ -->
  
  <div class="profiletitle">
-<form method="post" action="{{ route('profile') }}">
+<form method="post" action="{{ route('profile') }} " enctype="multipart/form-data">
 	@csrf
     @if ($user->profile_image)
             <img src="{{ asset('storage/'.$user->profile_image) }}" alt="ユーザーアイコン" width="50" height="50">
@@ -12,7 +12,7 @@
         @endif
    <label for="name">ユーザー名</label>
 	<div>
-	 <input type="text" name="name" id="name" value="{{ old('name', $user->username) }}" />
+	 <input type="text" name="username" id="name" value="{{ old('name', $user->username) }}" />
 	</div>
     
 	<label>メールアドレス</label>
@@ -35,12 +35,25 @@
 		<input type="text" name="bio" id="bio" value="{{ old('bio', $user->bio ?? '') }}" />
 	</div>
     <label>アイコン画像</label>
-	<div>
-		<textarea name="body">{{ old('body') }}</textarea>
-	</div>
+	 <input type="file" name="icon_image">
+     @error('icon_image')
+      <div class="text-danger">{{ $message }}</div>
+    @enderror
+
+    @if ($user->icon_image)
+    <img src="{{ asset('storage/icons/' . $user->icon_image) }}" alt="アイコン" style="width:100px; height:auto;">
+    @endif
 
 	<input class="btn btn-primary" type="submit" value="更新" />
+
 </form>
+@if($errors->any())
+        <div class="alert alert-danger"><ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul></div>
+    @endif
 </div>
 
 

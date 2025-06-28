@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
 Route::get('top', [PostsController::class, 'index'])->name("top");
 
 Route::get('profile', [ProfileController::class, 'profile'])->name("profile");
+Route::post('profile', [ProfileController::class, 'profileupdate'])->name("profile");
 //プロフィール閲覧で使用するユーザー情報の取得
 Route::get('/profile/{id}',[ProfileController::class,'get_user']);
 Route::get('search', [UsersController::class, 'search'])->name("search");
