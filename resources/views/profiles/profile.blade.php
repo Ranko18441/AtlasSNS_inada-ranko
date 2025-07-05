@@ -5,9 +5,9 @@
  <div class="profiletitle">
 <form method="post" action="{{ route('profile') }} " enctype="multipart/form-data">
 	@csrf
-    @if ($user->profile_image)
-            <img src="{{ asset('storage/'.$user->profile_image) }}" alt="ユーザーアイコン" width="50" height="50">
-        @else
+    @if ($user->icon_image)
+  <img src="{{ asset('storage/icons/'.$user->icon_image) }}" alt="アイコン" width="50" height="50">
+    @else
             <img src="images/icon1.png" width="32" height="32">
         @endif
    <label for="name">ユーザー名</label>
@@ -32,7 +32,7 @@
     
     <label for="bio">自己紹介（任意）</label>
     <div>
-		<input type="text" name="bio" id="bio" value="{{ old('bio', $user->bio ?? '') }}" />
+		<input type="text" name="bio" id="bio" value="{{ old('bio', $user->bio) }}" />
 	</div>
     <label>アイコン画像</label>
 	 <input type="file" name="icon_image">
@@ -41,7 +41,7 @@
     @enderror
 
     @if ($user->icon_image)
-    <img src="{{ asset('storage/icons/' . $user->icon_image) }}" alt="アイコン" style="width:100px; height:auto;">
+  <img src="{{ asset('storage/icons/'.$user->icon_image) }}" alt="アイコン" width="50" height="50">
     @endif
 
 	<input class="btn btn-primary" type="submit" value="更新" />

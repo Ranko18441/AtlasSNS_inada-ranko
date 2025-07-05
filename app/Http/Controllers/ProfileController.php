@@ -14,6 +14,7 @@ class ProfileController extends Controller
 {
     public function profile(){
          // 認証済みユーザーの情報を取得
+
         $user = Auth::user();
         $bio = $user->bio;
 
@@ -24,7 +25,6 @@ class ProfileController extends Controller
     public function profileupdate(Request $request){
 
         $user = Auth::user();
-        $bio = $user->bio;
 
          // 認証済みユーザーの情報を取得
         $validated = $request->validate([
@@ -32,13 +32,13 @@ class ProfileController extends Controller
             'email' =>'required|email|unique:users|min:5|max:40',
             'password'=>'required|alpha_num|min:8|max:20|confirmed',
             'password_confirmation'=>'required',
-            'bio'=>'required|max:150',
+            'bio'=>'max:150',
             'icon_image' => 'nullable|image|mimes:jpeg,jpg,png,bmp,gif,svg|max:2048',
         ]);
 
         // アイコン画像がアップロードされたら保存処理
-    if ($request->hasFile('icon')) {
-        $path = $request->file('icon')->store('public/icons');
+    if ($request->hasFile('icon_image')) {
+        $path = $request->file('icon_image')->store('public/icons');
         $user->icon_image = basename($path);
        
     }
@@ -46,8 +46,12 @@ class ProfileController extends Controller
 
         $user->update([
             'username' => $validated['username'],
-            'email'    => $validated['email']]);
-        return view('profiles.profile',compact('user', 'bio'));
+            'email'    => $validated['email'],
+            'bio'      => $validated['bio'],
+        ]);
+            
+        // return view('posts.index',compact('user', 'bio'));左記の記述だとエラーが出て間違っているので講師に聞く
+        return redirect()->route('top',compact('user'));
     }
 
 

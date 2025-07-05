@@ -8,7 +8,7 @@
     @else
     <ul>
         @foreach ($followsList as $following)
-            <li><img src="{{ asset('images/' . $following->icon_image) }}" alt="アイコン">
+            <img src="{{ asset('storage/icons/'.$following->icon_image) }}" alt="アイコン" width="50" height="50">
             <span>{{ $following->username }}</span>
             </li>
 

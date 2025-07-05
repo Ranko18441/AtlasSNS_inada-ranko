@@ -7,10 +7,9 @@
     @csrf <!-- CSRFトークンを追加 -->
     <div>
         <!-- ログインユーザーのアイコンを表示 -->
-        @if ($auths->profile_image) <!-- ユーザーがアイコンを持っている場合 -->
-        <!-- 'storage/'.$auths->profile_image) }}"の文章は誤っているので、どこかで直す。 -->
-            <img src="{{ asset('storage/'.$auths->profile_image) }}" alt="ユーザーアイコン" width="50" height="50">
-        @else
+        @if ($user->icon_image)
+       <img src="{{ asset('storage/icons/'.$user->icon_image) }}" alt="アイコン" width="50" height="50">
+       @else
             <img src="images/icon1.png" width="32" height="32">
         @endif
         </div>
@@ -36,12 +35,13 @@
   <!-- $postsの中には、postテーブルの中のid、postid~からのすべてのテーブル中の情報全部を送っている -->
     <div class="post">
         <!-- ユーザーのアイコン表示 -->
-        @if ($post->user->profile_image)
-            <img src="{{ asset('storage/'.$post->user->profile_image) }}" alt="ユーザーアイコン" width="50" height="50">
-        @else
+        @if ($user->icon_image)
+       <img src="{{ asset('storage/icons/'.$user->icon_image) }}" alt="アイコン" width="50" height="50">
+       @else
             <img src="images/icon1.png" width="32" height="32">
         @endif
-        
+
+
         <div class="post-content">
             <p><strong>{{ $post->user->name }}</strong>さんの投稿</p>
             <p>{{ $post->post }}</p>

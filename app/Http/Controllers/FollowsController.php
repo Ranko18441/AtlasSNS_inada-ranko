@@ -21,7 +21,7 @@ class FollowsController extends Controller
     // フォローしているユーザーの投稿を取得
     $posts = Post::with('user')->whereIn('user_id', $following_id)->get();
     // ビューに投稿データを渡す
-    return view('follows.followList', compact('posts', 'followsList', 'following_id'));
+    return view('follows.followList', compact('posts', 'followsList', 'following_id','user'));
 }
 
 
