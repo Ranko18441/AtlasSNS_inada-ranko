@@ -21,7 +21,7 @@ class FollowsController extends Controller
     // フォローしているユーザーの投稿を取得
     $posts = Post::with('user')->whereIn('user_id', $following_id)->get();
     // ビューに投稿データを渡す
-    return view('follows.followList', compact('posts', 'followsList', 'following_id','user'));
+    return view('follows.followList', compact('user','posts', 'followsList', 'following_id'));
 }
 
 
@@ -38,7 +38,7 @@ class FollowsController extends Controller
     // フォロワーの投稿を取得
     $posts = Post::with('user')->whereIn('user_id', $followed_id)->get();
     //  followingは関数　user.phpで定義したメソッドのことを指している。->はその前のものから引っ張ってくるというもの
-     return view('follows.followerList', compact('posts','followerList','followed_id'));
+     return view('follows.followerList', compact('user','posts','followerList','followed_id'));
 }
 
     

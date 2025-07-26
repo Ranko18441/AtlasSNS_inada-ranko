@@ -8,19 +8,21 @@
     @else
     <ul>
         @foreach ($followsList as $following)
+        <li>
+        <a href="{{ route('otherprofile', ['id' => $following->id]) }}">
             <img src="{{ asset('storage/icons/'.$following->icon_image) }}" alt="アイコン" width="50" height="50">
             <span>{{ $following->username }}</span>
-            </li>
+        </li>
 
             @endforeach
     <ul>
-    @endif 
     
+    @endif
+
     @if(isset( $posts ))
     @foreach ($posts as $post)
         <div>
-        <li><img src="{{ asset('images/' . $following->icon_image) }}" alt="アイコン">
-            <p>名前：{{ $post->user->username }}</p>
+        <!-- 結合演算子 （けつごうえんざんし）　変数と文字列をつなげたいときに持ってくるやり方　変数のものをイメージと繋げる-->
             <p>投稿内容：{{ $post->post }}</p>
         </div>
     @endforeach
@@ -28,6 +30,7 @@
     @else
         <p>投稿はありません。</p>
     @endif
+
 </x-login-layout>
     
       <!--endif がここまでですよという意味　 foreachの後には endforeach　elseifがそうじゃなければ -->

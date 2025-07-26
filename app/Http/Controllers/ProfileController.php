@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\User;//登録ユーザーのDBを使用
+use App\Models\Follow;
+use App\Models\Post; // Postモデルをインポート
 
 class ProfileController extends Controller
 {
@@ -68,8 +70,40 @@ class ProfileController extends Controller
         'user' => $user,
         'isFollowing' => $isFollowing
     ]);
+ }
+    public function otherprofile($id) {
+         // 認証済みユーザーの情報を取得
+        
+        // $id = $user->id;
+        // $id がユーザー名から取得したいもの　数字を使ってその人の情報を取得したい　個々の記述を考える
+        // $id(1) = username=1
+        $User=User::where('id', $id)->first();
+        $Post=Post::where('user_id', $id)->get();
+
+      
+        $posts = Post::latest()->get();
+    
+        
+    // フォローしているユーザーのIDを取得
+       $following = Auth::user()->following()->pluck('followed_id');
+    
+
+        return view('profiles.otherprofile',compact('User', 'Post'));
     }
     
 
+    // public function otherfollowerprofile($id) {
+    //      // 認証済みユーザーの情報を取得
+
+    //     $user = Auth::user();
+    //     $bio = $user->bio;
+    //     // フォロワーのユーザーIDを取得
+    //     $followerList = $user->followed()->get();
+    //     $follower = Auth::user()->followed()->pluck('following_id');
+    
+    //     return view('profiles.otherfollowerprofile',compact('user', 'bio','followerList','follower'));
+    // }
+
+    
     
 }

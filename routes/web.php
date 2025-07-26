@@ -30,6 +30,10 @@ Route::get('profile', [ProfileController::class, 'profile'])->name("profile");
 Route::post('profile', [ProfileController::class, 'profileupdate'])->name("profile");
 //プロフィール閲覧で使用するユーザー情報の取得
 Route::get('/profile/{id}',[ProfileController::class,'get_user']);
+
+// 他ユーザー(フォローしている人 フォロワーの）のプロフィール編集
+Route::get('/otherprofile/{id}',[ProfileController::class,'otherprofile'])->name("otherprofile");
+
 Route::get('search', [UsersController::class, 'search'])->name("search");
 Route::get('search', [UsersController::class, 'usersearch'])->name("search");
 //UsersControllerのクラスの名まえをみたらsearchだったのでindexからsearchに変更済み

@@ -30,7 +30,7 @@
 @endif
 
 
- <!-- 投稿内容一覧の表示 -->
+ <!-- ログインしているユーザーの投稿内容一覧の表示 -->
   @foreach ($posts as $post)
   <!-- $postsの中には、postテーブルの中のid、postid~からのすべてのテーブル中の情報全部を送っている -->
     <div class="post">
@@ -116,6 +116,9 @@
                 </div>
             </div>
           @endforeach
+
+
+          
         
         </x-login-layout>
 
