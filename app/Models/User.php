@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth; 
 
 class User extends Authenticatable
 {
@@ -55,6 +56,19 @@ class User extends Authenticatable
     {
         
         return $this->belongsToMany(User::class, 'follows','followed_id','following_id');
+        
+    }
+
+    // 各ユーザーがフォローされているか判定する記述
+    public function is_following($user_id)
+    // このIDを中間テーブルに探しに行く
+    {
+         return $this->following()->where('followed_id', $user_id)->first(['follows.id']);
+
+        //  whereとかをつかっていても探して終わりになっていた。firstを記載することで一番最初の値をとってきた。
+        
+                                    // ->where('followed_id', $user->id)
+                                    // ->exists();
         
     }
     

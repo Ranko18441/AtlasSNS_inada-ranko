@@ -46,6 +46,7 @@ class FollowsController extends Controller
     
     //フォローする(中間テーブルをインサート)
     public function following(Request $request, $id){
+        
 
         // idだと直接受け取れる。
         //自分がフォローしているかどうか検索
@@ -61,8 +62,8 @@ class FollowsController extends Controller
               }
         
          // 検索画面にリダイレクト（元のクエリを保持）
-    return redirect()->route('search', ['search' => $request->input('search')]);
-    }
+       return back(); 
+        }
 
 
     //フォローを外す
@@ -72,8 +73,8 @@ class FollowsController extends Controller
         $unfollowing = Follow::where('following_id', Auth::id())->where('followed_id', $request->user_id)->delete();
 
         // フォロー時と同様に、検索ワード付きで検索画面に戻す
-    return redirect()->route('search', ['search' => $request->input('search')]);
-    }
+     return back(); 
+        }
 
 
 }

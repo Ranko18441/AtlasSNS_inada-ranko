@@ -6,6 +6,7 @@ use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\User;//登録ユーザーのDBを使用
@@ -87,23 +88,8 @@ class ProfileController extends Controller
     // フォローしているユーザーのIDを取得
        $following = Auth::user()->following()->pluck('followed_id');
     
-
-        return view('profiles.otherprofile',compact('User', 'Post'));
+       return view('profiles.otherprofile',compact('User', 'Post'));
     }
-    
 
-    // public function otherfollowerprofile($id) {
-    //      // 認証済みユーザーの情報を取得
-
-    //     $user = Auth::user();
-    //     $bio = $user->bio;
-    //     // フォロワーのユーザーIDを取得
-    //     $followerList = $user->followed()->get();
-    //     $follower = Auth::user()->followed()->pluck('following_id');
-    
-    //     return view('profiles.otherfollowerprofile',compact('user', 'bio','followerList','follower'));
-    // }
-
-    
-    
+  
 }

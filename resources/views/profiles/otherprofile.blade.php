@@ -8,44 +8,43 @@
     <input type="hidden" name="user_id" value="{{ $User->id }}">
 
 
-@if($User->id !== Auth::id())
-@if($User->is_following)
-      <!-- フォロー解除ボタン -->
+    @if(auth()->user()->is_following($User->id)) 
+    <!-- ログインしているユーザーのIDとフォローされているIDを探している。 -->
+     <!-- フォロー解除ボタン -->
         <form method="POST" action="{{ route('unfollows') }}">
-          @csrf
+        @csrf
           <input type="hidden" name="user_id" value="{{ $User->id }}">
           <button type="submit" class="follow-btn" style="margin-left: 130px; background-color:red; color:#FFFAFA;">フォロー解除</button>
        </form>
-       else
+       @else
       <!-- フォローボタン -->
       <form method="POST" action="{{ route('follows', ['id' => $User->id]) }}">
           @csrf
           <button type="submit" class="follow-btn" style="margin-left: 130px; background-color:#00BFFF; color:white;">フォローする</button>
       </form>
     @endif
-    @endif
+
 
 <label for="name">ユーザー名</label>
 <div>
-<input type="text" name="username" id="name" value="{{ old('name', $User->username) }}" />
+<p>{{ old('name', $User->username) }}</p>
 </div>
     
 <label for="bio">自己紹介（任意）</label>
   <div>
-		<input type="text" name="bio" id="bio" value="{{ old('bio', $User->bio) }}" />
+		<p>{{ old('bio', $User->bio) }}</p>
 	</div>
 
   <div class="post-content">
-           @foreach($Post as $post){
+           @foreach($Post as $post)
           <p>{{ $post->post }}</p>
-            }
- 
+            
            @endforeach
+          </div>
+        </div>
+      </x-login-layout>
 
 
-  </div>
-</div>
 
 
 
-</x-login-layout>
