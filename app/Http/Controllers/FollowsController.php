@@ -61,7 +61,7 @@ class FollowsController extends Controller
 
               }
         
-         // 検索画面にリダイレクト（元のクエリを保持）
+       // 検索画面にリダイレクト（元のクエリを保持）
        return back(); 
         }
 
@@ -75,6 +75,8 @@ class FollowsController extends Controller
         // フォロー時と同様に、検索ワード付きで検索画面に戻す
      return back(); 
         }
+
+      
 
 
 }

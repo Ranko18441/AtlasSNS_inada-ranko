@@ -9,12 +9,12 @@
     <ul>
         @foreach ($followsList as $following)
         <li>
-        <a href="{{ route('otherprofile', ['id' => $following->id]) }}">
-            <img src="{{ asset('storage/icons/'.$following->icon_image) }}" alt="アイコン" width="50" height="50">
-            <span>{{ $following->username }}</span>
+            <a href="{{ route('otherprofile', ['id' => $following->id]) }}">
+                <img src="{{ asset('storage/icons/'.$following->icon_image) }}" alt="アイコン" width="50" height="50">
+                <span>{{ $following->username }}</span>
+            </a>
         </li>
-
-            @endforeach
+        @endforeach
     <ul>
     
     @endif
