@@ -3,7 +3,7 @@
 <!-- お名前のところ -->
 <div class="profiletitle">
 <!-- アイコン画像表示（フォローリストから）-->
-{{ "id,{$User->id}" }}
+<!-- {{ "id,{$User->id}" }} -->
     <img src="{{ asset('storage/icons/'.$User->icon_image) }}" alt="アイコン" width="50" height="50">
     <input type="hidden" name="user_id" value="{{ $User->id }}">
 
@@ -36,8 +36,13 @@
 	</div>
 
   <div class="post-content">
-           @foreach($Post as $post)
+      @foreach($Post as $post)
+      <!-- {{ "id,{$User->id}" }} -->
+    <img src="{{ asset('storage/icons/'.$User->icon_image) }}" alt="アイコン" width="50" height="50">
+    <input type="hidden" name="user_id" value="{{ $User->id }}">
+    <p>{{ old('name', $User->username) }}</p>
           <p>{{ $post->post }}</p>
+          <p><small>{{ $post->created_at->format('Y-m-d H:i:s') }}</small></p> <!-- 投稿日時を表示 -->
             
            @endforeach
           </div>
