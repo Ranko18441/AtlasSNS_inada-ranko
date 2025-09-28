@@ -1,10 +1,15 @@
         <div id="head">
-            <h1><a href="{{ route('top') }}"><img src="images/atlas.png"></a></h1>
+            <h1 class="banner"><a href="{{ route('top') }}"><img src="images/atlas.png" class="banner-img"></a></h1>
             <div id="accordion">
+                <button type="button" class="menu-btn"></button>
             <!-- メニューボタンを追加 -->
-        <button type="button" class="menu-btn"></button>
                 <div id="">
-                    <p>〇〇さん</p>
+                    @if(session('username'))
+                    <p class="msg">
+                    {{ session('username')}}さん
+   <!--  usernameではなく、値を変えてしまうと、直打ちされてしまうので、変数で登録する。-->
+                    </p>
+                    @endif
                 </div>
             <nav class="menu">
                 <ul>

@@ -1,8 +1,8 @@
 <x-login-layout>
     <body>
-        <form action="" method="get">
-            <input type="search" name="search" placeholder="ユーザ名">
-            <input type="image" src="/images/search.png" width="30" height="30">
+        <form action="" method="get" class="user_search">
+            <input type="search" name="search" placeholder="ユーザ名" class="search_form">
+            <input type="image" src="/images/search.png" class="search_png" width="34" height="34">
 
             {{-- 検索ワードの表示 --}}
             @if(!empty($search))
@@ -10,15 +10,16 @@
             @endif
         </form>
 
+        <hr  style="border: 4px solid #E0E0E0 ;">
         <!-- 検索結果の表示 -->
         @if(isset($users) && $users->isNotEmpty())
-            <ul>
+            <ul class="user_search_content">
                 @foreach($users as $user)
-                    <li>{{ $user->username }}</li>
+                    <li class="search_username">{{ $user->username }}</li>
                     @if ($user->icon_image)
-                        <img src="{{ asset('storage/icons/'.$user->icon_image) }}" alt="アイコン" width="50" height="50">
+                        <img src="{{ asset('storage/icons/'.$user->icon_image) }}" alt="アイコン" width="50" height="50" class="icon">
                     @else
-                        <img src="{{ asset('images/' . $user->icon_image) }}" alt="アイコン">
+                        <img src="{{ asset('images/' . $user->icon_image) }}" alt="アイコン" class="icon">
                     @endif
 
                     @if($user->id !== Auth::id())

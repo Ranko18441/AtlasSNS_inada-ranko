@@ -2,9 +2,91 @@
 
 html{
     height: 100%;
-}
+    }
 
 body{
     height: 100%;
-    background: #186AC9;
+     /* min-height: 150px;  福原さんから聞いたのを後で調べてみる*/
+    background: linear-gradient(to bottom, #056BC9,#3C99F0 , #76B7D3, #A4C69B,#DDD855);
+    text-align: center;
+    color:aliceblue;
+  
+    
 }
+
+/* .box1がログインのほうのボックスデザイン */
+.box1{
+    margin:  0 auto; /*中央に寄せたかった　ブロック要素なのでこの記述*/    
+    padding: 0.5em 1em;/*文字一つ一つの行間*/
+    width: 285px;/*四角形にするためのやつ*/
+    height: 300px;
+    color: #FFFFFF(15, 20, 24);/*文字色*/
+    margin-top: 30px;
+    border-radius: 15px;/*外側の角の丸み*/
+
+    background: linear-gradient(to bottom, #2774BA , #4C8DBF, #719992,#B2AE43);
+    
+}
+
+/* .box2が登録のほうのボックスデザイン */
+.box2{
+    margin:  0 auto; /*中央に寄せたかった　ブロック要素なのでこの記述*/  
+    padding: 15px;/*文字一つ一つの行間*/
+    width: 285px;/*四角形にするためのやつ*/
+    height: 470px;
+    color: #FFFFFF(15, 20, 24);/*文字色*/
+    margin-bottom: 20px;    
+    border-radius: 10px;/*外側の角の丸み*/
+    margin-top: 30px;
+
+    background: linear-gradient(to bottom, #2774BA , #4C8DBF, #719992,#B2AE43);
+    
+}
+
+
+.custom-form{
+    background-color: red;
+    color: #FFFFFF;
+    text-align: 20px;
+    width: 100px;
+    height: 40px;
+    margin: 15px 154px 30px;  /* ↓、→　下の物体が下に行く　*/
+    border-radius: 10px;
+}
+
+
+input, textarea, select {
+    color: rgb(15, 14, 14);
+    width: 100%;      /*フォーム内を埋めるためのもの*/
+    border-radius: 5px; /*メールアドレスとか入れるところの角の丸み*/
+    border: 1px
+    
+}
+
+.register{
+  color: #FFFFFF;
+}
+
+.social{
+   width: 200px;
+   margin:  0 auto; /*中央に寄せたかった　ブロック要素なのでこの記述*/ 
+   transform: translateX(-90px); 
+   font-size:  30px; 
+   white-space: nowrap;  /*文字を折り返さないようにした*/
+   font-family:Arial;
+   font-weight:bold
+}
+
+.sinki{
+    white-space: nowrap; 
+     font-size:  17px;
+     margin-top: 15px; 
+     font-family:Arial;
+}
+
+.list{
+    text-align: left;
+    border: 1px
+}
+
+

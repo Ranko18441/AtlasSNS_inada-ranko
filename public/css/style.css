@@ -2,6 +2,7 @@
 html{
 }
 body{
+  
 }
 /* header */
 header{
@@ -14,7 +15,7 @@ header{
     flex-flow: row wrap;
 }
 #container{
-    flex: 0 0 80%;
+    flex: 0 0 80%; 
 }
 #side-bar{
     flex: 0 0 19%;
@@ -22,12 +23,11 @@ header{
 }
 
 .menu-btn {
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     position: absolute;
     top: 120px;
     right: 220px;
-    background-color: #fff;
     border: none;
     outline: none;
     transition: transform 0.3s ease-in-out;
@@ -37,8 +37,9 @@ header{
   /* ↑を作るためにbeforeを記載 */
   .menu-btn::before {
     content: '';
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
+    position: relative; top: -80px;
     border: solid 3px #333;
     border-width: 0 0 3px 3px;
     transform: rotate(135deg); /* 初期の矢印の形 */
@@ -48,10 +49,10 @@ header{
 
 .menu-btn.show::before {
     transform: rotate(-225deg); /* クリック時に反転する矢印 */
+    
 }
 
-  
-  .menu-btn:focus-visible {
+   .menu-btn:focus-visible {
     box-shadow: 0 0 0 2px blue;
   }
   
@@ -178,14 +179,142 @@ header{
 }
 
 
+/* アトラスのロゴの写真のところ */
+
+.formtext{
+  margin-left: 60px;
+  position: relative;
+  top: -50px;
+}
+
+
+/* 投稿内容を入力してくださいのフォームの部分 */
+.formcontent{
+  resize: none;
+  width: 400px;
+  border-color:#ffffff;
+}
+
+.button{
+  all: unset; 
+  cursor: pointer;  
+  margin-left: 680px;
   
+}
 
 
+.banner {
+  width: 100%;
+  height: 80px;
+}
+
+.banner-img {
+  width: 80px;   /* Atlas画像だけを小さく */
+  margin-left: 15px;
+  margin-top: 20px;
+}
+
+.icon{
+  border-radius: 50%;
+}      /* アイコンを丸くするためのもの */
+
+.Two-Icon{
+  float: right;
+   display: flex;
+   margin-top: -35px;
+  
+}
+/* 上記は削除ボタンと編集ボタンを右に寄せるもの */
 
 
+.post-time{
+  float: right;
+  margin-top: -35px;
+}
+
+/* ユーザーの投稿したポスト */
+.userspost{
+  margin-left: 70px;
+  margin-top: -38px;
+  white-space: pre-line;
+
+}
 
 
+/* フォローリストとフォロワーリストのボタン*/
+.btn{
+    
+    color: #FFFFFF;/*文字色*/
+    background: #0067C6;
+    border-radius: 10px;/*角の丸み*/
+    width: 55%;
+    height: 30px;
+    white-space: nowrap;
+    margin-left: 70px; 
+}
 
+
+/* ユーザー検索のボタン*/
+.btn-user{
+  color: #FFFFFF;/*文字色*/
+  background: #0067C6;
+  border-radius: 10px;/*角の丸み*/
+  padding-left: 20px;
+  width: 55%;
+  height: 30px;
+  margin-left: 70px; 
+  white-space: nowrap;
+  margin-top: 20px;
+}
+
+.top_post{
+  margin-left: 50px; 
+  margin-top: 25px;
+}
+
+
+.second_post{
+  margin-left: 80px; 
+  margin-top: 25px;
+}
+
+/*/searchでの ユーザー検索をする際のフォーム*/
+.user_search{
+  margin-left: 40px; 
+  padding: 10px 0px 23px 0px; 
+}
+
+.search_form{
+  width: 220px;
+  height: 33px;
+  border-color:#7D7D7D;
+  border-width: 1px;
+}
+
+.search_png{
+position: relative; /* 今の位置を基準 */
+top: 10px; /* 上から10px */
+left: 15px;
+}
+
+.user_search_content{
+  margin-left: 180px; 
+}
+
+.search_username{
+position: relative; /* 今の位置を基準 */
+top: 25px; /* 上から10px */
+left: 110px;
+}
+
+.follow-btn{
+position: relative; /* 今の位置を基準 */
+bottom: 35px; 
+left: 350px;
+border-radius: 10px;
+width: 120px;
+border: 1px
+}
 
 
 

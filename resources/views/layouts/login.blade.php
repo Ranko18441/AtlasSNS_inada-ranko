@@ -47,7 +47,9 @@
         </div>
         <p class="btn"><a href="{{ route('follow') }}">フォロワーリスト</a></p>
       </div>
-      <p class="btn"><a href="{{ route('search') }}">ユーザー検索</a></p>
+
+      <hr  style="border: solid #E0E0E0 ;">
+      <p class="btn-user"><a href="{{ route('search') }}">ユーザー検索</a></p>
     </div>
   </div>
   <footer>

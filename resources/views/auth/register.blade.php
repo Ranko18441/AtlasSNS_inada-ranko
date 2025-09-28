@@ -1,9 +1,10 @@
 <x-logout-layout>
     <!-- 適切なURLを入力してください -->
+<div class=box2>
 {!! Form::open(['url' => 'register']) !!}
 
-<h2>新規ユーザー登録</h2>
-
+<h2 class=sinki>新規ユーザー登録</h2>
+<ul class="list">
 {{ Form::label('ユーザー名') }}
 {{ Form::text('username',null,['class' => 'input']) }}
 
@@ -15,8 +16,9 @@
 
 {{ Form::label('パスワード確認') }}
 {{ Form::text('password_confirmation',null,['class' => 'input']) }}
+</ul>
 
-{{ Form::submit('登録') }}
+{{ Form::submit('新規登録',['class' => 'custom-form']) }}
 
 <p><a href="login">ログイン画面へ戻る</a></p>
 
@@ -29,6 +31,8 @@
             @endforeach
           </ul></div>
     @endif
+
+</div>
 
 
 </x-logout-layout>

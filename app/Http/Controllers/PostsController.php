@@ -13,10 +13,12 @@ class PostsController extends Controller
       {
         $auths = Auth::user();
         $user = Auth::user(); 
+        $followsList = $user->following()->get();
 
         // 投稿内容を取得（新しい順に並べる）
         $posts = Post::latest()->with('user')->get(); // `with('user')`を追加すると、ユーザー情報も一緒に取得できる
-        return view('posts.index',compact('auths', 'posts','user'));
+    
+        return view('posts.index',compact('auths', 'posts','followsList','user'));
 
     }
     public function postcreate(Request $request) // $requestを引数として追加
