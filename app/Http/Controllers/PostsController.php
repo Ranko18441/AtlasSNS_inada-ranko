@@ -12,13 +12,14 @@ class PostsController extends Controller
     public function index()
       {
         $auths = Auth::user();
-        $user = Auth::user(); 
-        $followsList = $user->following()->get();
+        $user = Auth::user();
+        $posts = Post::whereIn('user_id', $user->following
+        ->pluck("id")
+        ->push($auths->id),)
+        ->orderBy("updated_at", "desc")
+        ->get();
 
-        // 投稿内容を取得（新しい順に並べる）
-        $posts = Post::latest()->with('user')->get(); // `with('user')`を追加すると、ユーザー情報も一緒に取得できる
-    
-        return view('posts.index',compact('auths', 'posts','followsList','user'));
+    return view('posts.index',compact('auths', 'posts','user'));
 
     }
     public function postcreate(Request $request) // $requestを引数として追加

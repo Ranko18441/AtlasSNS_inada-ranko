@@ -1,17 +1,14 @@
 @charset "UTF-8";
 
-html{
-    height: 100%;
-    }
 
-body{
+html,body{
     height: 100%;
      /* min-height: 150px;  福原さんから聞いたのを後で調べてみる*/
     background: linear-gradient(to bottom, #056BC9,#3C99F0 , #76B7D3, #A4C69B,#DDD855);
     text-align: center;
     color:aliceblue;
-  
-    
+    min-height: 650px; 
+    font-family:Arial;
 }
 
 /* .box1がログインのほうのボックスデザイン */
@@ -23,9 +20,7 @@ body{
     color: #FFFFFF(15, 20, 24);/*文字色*/
     margin-top: 30px;
     border-radius: 15px;/*外側の角の丸み*/
-
-    background: linear-gradient(to bottom, #2774BA , #4C8DBF, #719992,#B2AE43);
-    
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* .box2が登録のほうのボックスデザイン */
@@ -38,8 +33,7 @@ body{
     margin-bottom: 20px;    
     border-radius: 10px;/*外側の角の丸み*/
     margin-top: 30px;
-
-    background: linear-gradient(to bottom, #2774BA , #4C8DBF, #719992,#B2AE43);
+    background-color: rgba(0, 0, 0, 0.2);
     
 }
 
@@ -59,7 +53,7 @@ input, textarea, select {
     color: rgb(15, 14, 14);
     width: 100%;      /*フォーム内を埋めるためのもの*/
     border-radius: 5px; /*メールアドレスとか入れるところの角の丸み*/
-    border: 1px
+    border: 1px; 
     
 }
 
@@ -74,19 +68,37 @@ input, textarea, select {
    font-size:  30px; 
    white-space: nowrap;  /*文字を折り返さないようにした*/
    font-family:Arial;
-   font-weight:bold
+   font-weight:bold;
 }
 
 .sinki{
     white-space: nowrap; 
      font-size:  17px;
      margin-top: 15px; 
-     font-family:Arial;
+    font-family:Arial;
 }
 
 .list{
     text-align: left;
-    border: 1px
+    border: 1px;
 }
+
+label{
+    font-size: 12px;
+}
+
+a {
+color: white;
+text-decoration: underline;
+}
+
+a:hover {
+  color: white;
+}
+
+
+
+
+
 
 

@@ -53,7 +53,7 @@ Route::post('post', [PostsController::class, 'postcreate'])->name("post");
 
 Route::post('postupdate', [PostsController::class, 'postupdate'])->name("postupdate");
 
-Route::delete('postdelete/{id}', [PostsController::class, 'postdelete'])->name("postdelete");
+Route::get('postdelete/{id}', [PostsController::class, 'postdelete'])->name("postdelete");
 
 });
 

@@ -32,6 +32,7 @@
 
 <!-- ログインしているユーザーの投稿内容一覧の表示 -->
 @foreach ($posts as $post)
+<!-- ($followsList as $following これを ($posts as $post)の中に入れるのをコントローラーでする) -->
 <!-- $postsの中には、postテーブルの中のid、postid~からのすべてのテーブル中の情報全部を送っている -->
   <div class="second_post">
    <!-- ユーザーのアイコン表示 -->
@@ -56,7 +57,7 @@
          data-post-id="{{ $post->id }}">
          <img src="images/edit.png" alt="Edit Icon" width="32" height="32">
         </a>
-        <!-- 削除の時のモーダルの初期の画面-->
+        <!-- 削除ボタン-->
         <div class="modal-type">
           <a href="" class="modalopen delete-btn" data-target="delete-modal-{{ $post->id }}" post="{{$post->post}}">
             <img src="images/trash-h.png" alt="Trash Icon" width="32" height="32">
@@ -64,21 +65,16 @@
         </div>
       </ul>
 
-  
+     
       
-      <!-- 投稿の時のモーダルの中身            
-        <div class="modal-main js-modal" id="edit-modal-{{ $post->id }}">① -->
-          <!-- <div class="modal-inner">② -->
-            <!-- <div class="inner-content">
-              <p class="inner-title"></p> --> 
-              <!-- 編集の時のモーダル本体 -->
+           <!-- 編集の時のモーダルの中身--> 
               <div class="modal-main js-modal" id="edit-modal-{{ $post->id }}">
                 <div class="modal-inner">
                   <form action="{{ route('postupdate') }}" method="POST">
                     @csrf
                     <input type="hidden" name="post_id" class="modal-post-id" value="{{ $post->id }}">
                     <textarea name="post" class="modal-textarea"></textarea>
-                    <button type="submit">
+                    <button type="submit" class="send-button modaleditClose">
                       <img src="images/edit.png" alt="Edit Icon" width="32" height="32">
                     </button>
                   </form>
@@ -92,13 +88,10 @@
                 <div class="modal-inner">
                   <div class="inner-content">
                     <p>この投稿を削除します。よろしいでしょうか？</p>
-                    <form action="{{ route('postdelete', ['id' => $post->id]) }}" method="post">
+                    <form action="{{ route('postdelete', ['id' => $post->id]) }}" method="get" > 
                       @csrf
                       @method('DELETE') <!-- LaravelでDELETEリクエストを送る -->
-                      <button type="submit" class="send-button modalClose">
-                        <!-- 削除フォーム ボタン-->
-                        <img src="images/trash-h.png" alt="Trash Icon" width="32" height="32"> 削除する
-                      </button>
+                      <button type="submit" class="send-button modalClose" >OK</button>
                     </form>
                     <button class="modalCloseBtnOnly">キャンセル</button>
                   </div>
@@ -110,18 +103,7 @@
             
   </div>
   <hr  style="border: solid #E0E0E0 ;">
-        @endforeach
-
-      
-        @foreach ($followsList as $following)
-           <li>
-           <img src="{{ asset('storage/icons/'.$following->icon_image) }}" alt="アイコン" width="50" height="50" class="icon">
-            <span>{{ $following->username }}</span>
-             <p>{{ $following->post }}</p>
-        </li>
-           
-        @endforeach
-        
+  @endforeach
      
         </x-login-layout>
 

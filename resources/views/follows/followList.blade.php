@@ -1,31 +1,32 @@
 <x-login-layout>
 
 
-  <h2>機能を実装していきましょう。</h2>
 
     @if($followsList->isEmpty())
+    <h4>フォローリスト</h4> 
     <p>フォローしているユーザーはいません。</p>
     @else
-    <ul>
+    <div class="list_icon">
+        <h4>フォローリスト</h4> 
         @foreach ($followsList as $following)
-        <li>
+        <img src="{{ asset('storage/icons/'.$following->icon_image) }}" alt="アイコン" width="50" height="50" class="icon">
             <a href="{{ route('otherprofile', ['id' => $following->id]) }}">
-                <img src="{{ asset('storage/icons/'.$following->icon_image) }}" alt="アイコン" width="50" height="50">
                 <span>{{ $following->username }}</span>
             </a>
-        </li>
         @endforeach
-    <ul>
-    
+    </div>
+    <hr  style="border: 4px solid #E0E0E0 ;">
     @endif
 
     @if(isset( $posts ))
     @foreach ($posts as $post)
-        <div>
+        <div class="userspost">
         <!-- 結合演算子 （けつごうえんざんし）　変数と文字列をつなげたいときに持ってくるやり方　変数のものをイメージと繋げる-->
-            <p>投稿内容：{{ $post->post }}</p>
-        </div>
-    @endforeach
+        <img src="{{ asset('storage/icons/' . $post-> user -> icon_image) }}" alt="アイコン"width="50" height="50" class="icon">
+        <p>投稿内容：{{ $post->post }}</p></div>
+        <hr  style="border: solid #E0E0E0 ;">
+        @endforeach
+
     
     @else
         <p>投稿はありません。</p>

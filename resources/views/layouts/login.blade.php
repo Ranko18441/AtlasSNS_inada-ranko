@@ -37,13 +37,11 @@
       <div id="confirm">
         <p>○○さんの</p>
         <div>
-          <p>フォロー数</p>
-          <p>{{ Auth::user()->following()->get()->count() }}名</p>
+          <p>フォロー数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ Auth::user()->following()->get()->count() }}名</p>
         </div>
         <p class="btn"><a href="{{ route('followlist') }}">フォローリスト</a></p>
         <div>
-          <p>フォロワー数</p>
-          <p>{{ Auth::user()->followed()->get()->count() }}名</p>
+          <p>フォロワー数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ Auth::user()->followed()->get()->count() }}名</p>
         </div>
         <p class="btn"><a href="{{ route('follow') }}">フォロワーリスト</a></p>
       </div>
