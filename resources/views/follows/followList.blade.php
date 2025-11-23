@@ -9,10 +9,9 @@
     <div class="list_icon">
         <h4>フォローリスト</h4> 
         @foreach ($followsList as $following)
-        <img src="{{ asset('storage/icons/'.$following->icon_image) }}" alt="アイコン" width="50" height="50" class="icon">
-            <a href="{{ route('otherprofile', ['id' => $following->id]) }}">
-                <span>{{ $following->username }}</span>
-            </a>
+        <a href="{{ route('otherprofile', ['id' => $following->id]) }}">
+                <img src="{{ asset('storage/icons/'.$following->icon_image) }}" alt="アイコン" width="50" height="50" class="icon">
+         </a>
         @endforeach
     </div>
     <hr  style="border: 4px solid #E0E0E0 ;">
@@ -20,10 +19,15 @@
 
     @if(isset( $posts ))
     @foreach ($posts as $post)
-        <div class="userspost">
+        <div class="fouserspost">
         <!-- 結合演算子 （けつごうえんざんし）　変数と文字列をつなげたいときに持ってくるやり方　変数のものをイメージと繋げる-->
         <img src="{{ asset('storage/icons/' . $post-> user -> icon_image) }}" alt="アイコン"width="50" height="50" class="icon">
-        <p>投稿内容：{{ $post->post }}</p></div>
+        <div class="seconduserspost">
+        <span>{{ $post-> user -> username }}</span>
+        <p>投稿内容：{{ $post->post }}</p>
+        </div>
+       </div>
+        <p class="followpost-time"><small>{{ $post->created_at->format('Y-m-d H:i:s') }}</small></p>
         <hr  style="border: solid #E0E0E0 ;">
         @endforeach
 

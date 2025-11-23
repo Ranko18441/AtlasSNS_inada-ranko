@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 // ↑の一文はAuthを使用するために追加で記載
 use App\Models\Post; // Postモデルをインポート
-
 class PostsController extends Controller
 {
     //
@@ -13,13 +12,15 @@ class PostsController extends Controller
       {
         $auths = Auth::user();
         $user = Auth::user();
-        $posts = Post::whereIn('user_id', $user->following
-        ->pluck("id")
-        ->push($auths->id),)
+
+         // 11/23 追記 フォローしているユーザーIDの一覧
+        $followsList = $user->following->pluck('id');
+
+        $posts = Post::whereIn('user_id', $followsList->push($auths->id))
         ->orderBy("updated_at", "desc")
         ->get();
 
-    return view('posts.index',compact('auths', 'posts','user'));
+    return view('posts.index',compact('auths', 'posts','user','followsList'));
 
     }
     public function postcreate(Request $request) // $requestを引数として追加
@@ -34,6 +35,7 @@ class PostsController extends Controller
         Post::create([
         'post' => $validated['post'],  // ポスト内容    配列の要素にアクセスする際は [] を使う必要があります。
         'user_id' => Auth::id(), // 現在のユーザーIDを設定
+        
     ]);
 
 
@@ -47,9 +49,12 @@ class PostsController extends Controller
         // dd('ここまで届いてるよ！', $request->all());
         // 値がきちんと送られているかを確認するためにデバック関数を記載。
          // バリデーションの実行
+
+        
         $validated = $request->validate([
             'post' => 'required|min:1|max:150', // ポスト内容が1文字以上150文字以内であること
             'post_id' => 'required|integer|exists:posts,id',
+            
         ]);
          // 一つのメソッドの後には;をつける
        

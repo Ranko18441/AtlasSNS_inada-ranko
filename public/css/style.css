@@ -2,6 +2,7 @@
 html{
 }
 body{
+  overflow-x: hidden;
   
 }
 /* header */
@@ -27,12 +28,12 @@ header{
 
 
 
-/* 下記は矢印をいじる際のボタン */
+/* 下記は矢印をいじる際のボタン 矢印の位置もここで調整する*/
 .menu-btn {
     width: 20px;
     height: 20px;
     position: absolute;
-    top: 100px;
+    top: 68px;
     right: 220px;
     border: none;
     outline: none;
@@ -51,12 +52,14 @@ header{
     content: '';
     width: 20px;
     height: 20px;
-    position: relative; 
-    bottom: 32px;
-    border: solid 3px #DF5656;
+    position: absolute;  /* ← relative から absolute に変更 */
+    top: 0;              /* ← bottom:32px を削除して top:0 に統一 */
+    left: 0;
+    border: solid 3px #E7F1FA;
 
     border-width: 0 0 3px 3px;
-    transform: rotate(135deg); /* 初期の矢印の形 */
+    transform: rotate(-45deg); /* 初期の矢印の形 */
+    transform-origin: center; /* ← 回転中心を固定 */
     transition: transform 0.3s ease-in-out;
     display: block;
 }
@@ -74,19 +77,15 @@ header{
  color:#FFFFFF;
 }
 
-.menu-btn.show::before {
-    transform: rotate(-225deg); /* クリック時に反転する矢印 */
-}
-
-   .menu-btn:focus-visible {
+.menu-btn:focus-visible {
     box-shadow: 0 0 0 2px blue;
   }
   
   /* メニューの初期状態（非表示） */
   .menu {
+    width: 272px;
     position: absolute;
-    width: 170px;
-    top: 160px;
+    top: 110px;
     right: 100px;
     color: #808080;
     display: none; /* 初期状態は非表示 */
@@ -99,21 +98,27 @@ header{
     display: block;
     animation: slideDown 0.3s ease-in-out; /* メニューがスライドダウンするアニメーション */
     background-color:#FFFFFF;
+    height: 163px;
 }
 
 
 /* モーダルの中のHOMEとかの文字のサイズを変えるためのclass */
   .modalcharacter a{
    color: #A3A3A3;
+   position: relative;
+   top: 16px;
   }
-  
+
   .menu li{
     background-color: transparent;
+    height: 55px;
     transition: background-color 0.3s ease;
+    text-align:center;
    }
 
   .menu li:hover {
     background-color: #00297E;
+    
 
    } 
 
@@ -134,11 +139,7 @@ header{
     }
   }
   
-  .menu ul {
-    padding: 30;
-    list-style: none;
-
-  }
+  
 
  
 /* 4/1　追記　アイコンのモーダルのスタイル */
@@ -362,14 +363,34 @@ top: 5px;
   margin-top: -35px;
 }
 
-/* ユーザーの投稿したポスト */
+/* topの一番最初のユーザーの投稿したポスト */
 .userspost{
   margin-left: 70px;
   margin-top: -38px;
   white-space: pre-line;
-
+  height: auto;
 }
 
+
+/* 他ユーザエーの大枠の投稿したポスト */
+.fouserspost{
+  position: relative;
+  left:70px;
+  top:30px;
+}
+
+/* 他ユーザーの投稿したポストと名前 */
+.seconduserspost{
+ position: relative;
+ left:70px;
+ bottom:65px;
+}
+
+/* 他ユーザーの投稿した時の時間 */
+.followpost-time{
+  float: right;
+  margin-top: -100px;
+}
 
 /* フォローリストとフォロワーリストのボタン*/
 .btn{
@@ -481,6 +502,7 @@ border: 1px
   position: relative; 
   left:450px;
   bottom: 35px; 
+  
 
 }
 
@@ -488,10 +510,37 @@ border: 1px
 .profilename{
   display: flex;
   align-items: center;
- transform: translateY(30px);
- position: relative; 
- right:200px;
+  position: relative; 
+  top:30px;
+  right:200px;
+
+  
 }
+
+.form-input{
+  background-color: #EFEFEF;
+  position: relative;
+  left:20px;
+  border: 1.5px solid #ccc; 
+  width:300px
+}
+
+input[type=file] {
+    position: relative;
+    z-index: 1000; /* 他の要素より前面に出す */
+    pointer-events: auto;
+}
+
+/* 下記はプロフィールページのファイルを選択してくださいのフォーム */
+.form-aiconinput{
+  position: relative;
+  left:20px;
+  width: 300px;
+  height: 80px;
+  background-color: #FFFFFF;
+}
+
+
 
 .banner_icon{
   float: right;
@@ -499,6 +548,7 @@ border: 1px
   margin-top: 20px; 
   height: 40px;
   width: 40px;
+  border-radius: 50%;
 }
 
 /* 下記はフォローリストとフォロワーリストのcss */
@@ -506,6 +556,7 @@ border: 1px
   display: flex;
   margin-left: 70px;
   flex-wrap: wrap;
+  gap: 15px;
 }
 
 a {

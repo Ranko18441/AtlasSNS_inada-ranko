@@ -16,10 +16,10 @@
             <ul class="user_search_content">
                 @foreach($users as $user)
                     <li class="search_username">{{ $user->username }}</li>
-                    @if ($user->icon_image)
+                    @if ($user->icon_image != "icon1.png")
                         <img src="{{ asset('storage/icons/'.$user->icon_image) }}" alt="アイコン" width="50" height="50" class="icon">
                     @else
-                        <img src="{{ asset('images/' . $user->icon_image) }}" alt="アイコン" class="icon">
+                        <img src="{{ asset('images/' . $user->icon_image) }}" alt="アイコン" width="50" height="50" class="icon">
                     @endif
 
                     @if($user->id !== Auth::id())

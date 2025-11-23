@@ -1,7 +1,12 @@
     
-      <h1 class="banner"><a href="{{ route('top') }}"><img src="images/atlas.png" class="banner-img"></a>
-       <img src="images/icon1.png" width="32" height="32" class="banner_icon">
-       </h1>
+      <h1 class="banner"><a href="{{ route('top') }}"><img src="{{ asset('images/atlas.png')}}" class="banner-img"></a>
+       <!-- ユーザーのアイコン表示 -->
+      <img src="{{ asset('storage/icons/'.auth()->user()->icon_image) }}" alt="icon" width="32" height="32" class="banner_icon">
+      
+      
+      
+    
+    </h1>
        <p class="myname">{{auth()->user()->username}}さん</P>
          
 <!--  usernameではなく、値を変えてしまうと、直打ちされてしまうので、変数で登録する。-->
