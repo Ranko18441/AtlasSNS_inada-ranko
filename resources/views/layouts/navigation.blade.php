@@ -27,6 +27,9 @@
 
         
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script><!-- ↓この記述でつなげている -->
-        <script src="./js/script.js"></script>
+        
+        <!-- <script src="./js/script.js"></script> -->
+
+        <script src="{{ asset('js/script.js') }}"></script>
 
         

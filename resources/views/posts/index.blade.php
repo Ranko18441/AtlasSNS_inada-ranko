@@ -34,24 +34,21 @@
 @foreach ($posts as $post)
 
 <div class="second_post">
-    <!-- - 投稿主アイコン -- -->
-    @if ($post->user->icon_image != "icon1.png")
-        <img src="{{ asset('storage/icons/' . $post->user->icon_image) }}" width="50" height="50" class="icon">
-    @else
-        <img src="{{ asset('images/' . $post->user->icon_image) }}" width="50" height="50" class="icon">
-    @endif
 
-    <div class="post-content">
+  <!-- - 投稿主アイコン -- -->
+  @if ($post->user->icon_image != "icon1.png")
+  <img src="{{ asset('storage/icons/' . $post->user->icon_image) }}" width="50" height="50" class="icon">
+  @else
+  <img src="{{ asset('images/' . $post->user->icon_image) }}" width="50" height="50" class="icon">
+  @endif
+  
+  <div class="post-content">
+    <span class="topusername">{{ $post-> user -> username }}</span>
+    <p class="post-time"><small>{{ $post->created_at->format('Y-m-d H:i:s') }}</small></p>
+    <p class="userspost">{{ $post->post }}</p>
 
-        <p><strong>{{ $post->user->name }}</strong></p>
-        <p class="post-time">
-            <small>{{ $post->created_at->format('Y-m-d H:i:s') }}</small>
-        </p>
-
-        <p class="userspost">{{ $post->post }}</p>
-
-         <!-- 編集・削除ボタン -->
-        <ul class="Two-Icon">
+  <!-- 編集・削除ボタン -->
+    <ul class="Two-Icon">
 
         @if (Auth::id() === $post->user_id)
             <!--  編集 ---->
