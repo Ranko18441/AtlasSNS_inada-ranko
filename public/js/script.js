@@ -61,12 +61,14 @@ $(function () {
     const targetId = $(this).data('target');
     const modal = $('#' + targetId);
 
+    modal.fadeIn();
+    
     // 投稿内容とIDを取得
     const post = $(this).data('post');
     const postId = $(this).data('post-id');
 
     // モーダル表示
-    modal.fadeIn();
+    
 
     // モーダル内に値をセット
     modal.find('.modal-textarea').val(post);
@@ -75,11 +77,12 @@ $(function () {
    // モーダルの閉じるボタンで閉じる
   $('.modalCloseBtnOnly').on('click', function () {
     $(this).closest('.js-modal').fadeOut();
+    $('body').removeClass('modal-open');   // ←11/29 追加
   });
 
   // ←★ここが追加部分：モーダルの外側をクリックで閉じる
   $(document).on('click', '.js-modal', function (e) {
-    if ($(e.target).closest('.modal-inner').length === 0) {
+    if ($(e.target).closest('.modal-inner, .hmodal-inner').length === 0) {
       $(this).fadeOut();
     }
   });

@@ -38,6 +38,27 @@ html,body{
 }
 
 
+/* 新規登録後のボックスデザイン */
+#clear{
+ margin:  0 auto; /*中央に寄せたかった　ブロック要素なのでこの記述*/    
+    padding: 0.5em 1em;/*文字一つ一つの行間*/
+    width: 230px;/*四角形にするためのやつ*/
+    height: 220px;
+    color: #FFFFFF(15, 20, 24);/*文字色*/
+    margin-top: 30px;
+    margin-right: 550px;
+    border-radius: 15px;/*外側の角の丸み*/
+    background-color: rgba(0, 0, 0, 0.2);   
+}
+
+.addtext{
+    font-size:  12px;
+    word-break: normal;
+    overflow-wrap: break-word;
+    white-space: normal;
+
+}
+
 .custom-form{
     background-color: red;
     color: #FFFFFF;
@@ -57,13 +78,25 @@ input, textarea, select {
     
 }
 
+
+
 .register{
   color: #FFFFFF;
+  /*11/29 下記追加 新規ユーザーの方はこちらの文字を下に*/ 
+  position: relative;
+  top: 10px;
+}
+
+.atlaspng{
+    position: relative;
+    top: 13px;
+    margin-right:20px;
+
 }
 
 .social{
    width: 200px;
-   margin:  0 auto; /*中央に寄せたかった　ブロック要素なのでこの記述*/ 
+   margin-left: 528px;
    transform: translateX(-90px); 
    font-size:  30px; 
    white-space: nowrap;  /*文字を折り返さないようにした*/

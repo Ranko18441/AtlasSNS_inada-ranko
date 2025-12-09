@@ -5,7 +5,12 @@
   <div class="profilecontent">
 <!-- アイコン画像表示（フォローリストから）-->
 <!-- {{ "id,{$User->id}" }} -->
+    @if ($User->icon_image != "icon1.png")
     <img src="{{ asset('storage/icons/'.$User->icon_image) }}" alt="アイコン" width="50" height="50" class="icon">
+    @else
+    <img src="{{ asset('images/' . $User->icon_image) }}" alt="アイコン" width="50" height="50" class="icon">
+     @endif
+    <input type="hidden" name="user_id" value="{{ $User->id }}">
     <input type="hidden" name="user_id" value="{{ $User->id }}">
     @if(auth()->user()->is_following($User->id)) 
     <!-- ログインしているユーザーのIDとフォローされているIDを探している。 -->
@@ -38,8 +43,7 @@
 
 <hr style="border: 4px solid #E0E0E0;  margin-left: -100px; margin-right: 90px;">
   <div class="post-content">
-      @foreach($Post as $post)
-      <!-- {{ "id,{$User->id}" }} -->
+    @foreach($Post as $post)
     <img src="{{ asset('storage/icons/'.$User->icon_image) }}" alt="アイコン" width="50" height="50" class="icon">
     <input type="hidden" name="user_id" value="{{ $User->id }}">
     <div class="posting-content">

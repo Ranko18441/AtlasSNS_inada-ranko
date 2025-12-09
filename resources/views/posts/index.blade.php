@@ -73,12 +73,12 @@
 
 </div>
 
-<hr style="border: 4px solid #E0E0E0;">
+<hr style="border: 2px solid #E0E0E0;">
 
  <!-- 編集モーダル -- -->
 
 <div class="modal-main js-modal" id="edit-modal-{{ $post->id }}">
-    <div class="modal-inner">
+    <div class="hmodal-inner">
         <form action="{{ route('postupdate') }}" method="POST">
             @csrf
             <input type="hidden" name="post_id" value="{{ $post->id }}">

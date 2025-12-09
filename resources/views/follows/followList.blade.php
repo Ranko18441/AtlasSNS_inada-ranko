@@ -10,7 +10,11 @@
         <h4>フォローリスト</h4> 
         @foreach ($followsList as $following)
         <a href="{{ route('otherprofile', ['id' => $following->id]) }}">
-                <img src="{{ asset('storage/icons/'.$following->icon_image) }}" alt="アイコン" width="50" height="50" class="icon">
+               @if ($following->icon_image != "icon1.png")
+                        <img src="{{ asset('storage/icons/'.$following->icon_image) }}" alt="アイコン" width="50" height="50" class="icon">
+                    @else
+                        <img src="{{ asset('images/' . $following->icon_image) }}" alt="アイコン" width="50" height="50" class="icon">
+                    @endif
          </a>
         @endforeach
     </div>
