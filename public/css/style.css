@@ -154,7 +154,7 @@ header{
   position: fixed;       /* ←画面全体に固定 */
   top: 0px;
   left: 0px;
-  width: 100vw;          /* ←画面いっぱいに広げる */
+  width: 100vw;   /* ←画面いっぱいに広げる */
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5); /* ←暗い背景でクリックしやすく */
   z-index: 1000;
@@ -192,7 +192,10 @@ body.modal-open {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
+  width: 635px;
+  height: 229px;
+  background-color: white;
+   border-radius: 8px;
 }
 
 
@@ -266,19 +269,20 @@ body.modal-open {
   justify-content: center; /* 横中央 */
   align-items: center; 
   position: relative;
-  bottom: 50px;
-  width: 80px;
-  height: 35px; 
-  left: 170px;
+  bottom: 3px;
+  width: 84px;
+  height: 51px; 
+  left: 260px;
 }
 
 /* 編集ボタンを押した時の中身の編集するフォームのところ*/
 .modal-textarea{
-  width: 450px;
-  height: 150px;
+  width: 561px;
+  height: 147px;
   resize: none;
   display: block;
   margin: 0 auto; /* 中央寄せしたいならこれ */
+  margin-top: 24px;
 }
 
 
@@ -402,8 +406,6 @@ top: 5px;
   position: relative;
   left:70px;
   top:30px;
-  white-space: pre-line;
-  
 }
 
 /* 他ユーザーの投稿したポストと名前 */
@@ -411,7 +413,6 @@ top: 5px;
  position: relative;
  left:70px;
  bottom:65px;
- white-space: pre-line;
 }
 
 /* 他ユーザーの投稿した時の時間 */

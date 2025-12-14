@@ -32,7 +32,7 @@ class ProfileController extends Controller
          // 認証済みユーザーの情報を取得
         $validated = $request->validate([
             'username' => 'required|min:2|max:12',
-            'email' =>'required|email|unique:users|min:5|max:40',
+            'email' => 'required|email|min:5|max:40|unique:users,email,' . Auth::id(),
             'password'=>'required|alpha_num|min:8|max:20|confirmed',
             'password_confirmation'=>'required',
             'bio'=>'max:150',

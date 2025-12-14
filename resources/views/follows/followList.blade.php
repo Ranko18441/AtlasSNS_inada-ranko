@@ -23,12 +23,13 @@
 
     @if(isset( $posts ))
     @foreach ($posts as $post)
-        <div class="fouserspost">
+    
+    <div class="fouserspost">
         <!-- 結合演算子 （けつごうえんざんし）　変数と文字列をつなげたいときに持ってくるやり方　変数のものをイメージと繋げる-->
         <img src="{{ asset('storage/icons/' . $post-> user -> icon_image) }}" alt="アイコン"width="50" height="50" class="icon">
         <div class="seconduserspost">
         <span>{{ $post-> user -> username }}</span>
-        <p>投稿内容：{{ $post->post }}</p>
+        <p>投稿内容：{!! nl2br(htmlspecialchars($post->post)) !!}</p>
         </div>
        </div>
         <p class="followpost-time"><small>{{ $post->created_at->format('Y-m-d H:i:s') }}</small></p>

@@ -10,8 +10,8 @@
   <form action="{{ route('post') }}" method="POST" class="formtext">
       @csrf <!-- CSRFトークンを追加 -->
       <textarea name="post" class="formcontent"placeholder="投稿内容を入力してください"></textarea>
+      <!-- ログインユーザーのアイコンを表示 -->
       <button type="submit" class="button"><img src="images/post.png" alt="" width="32" height="32"></button>
-    <!-- ログインユーザーのアイコンを表示 -->
   </form>
   </div>
 
