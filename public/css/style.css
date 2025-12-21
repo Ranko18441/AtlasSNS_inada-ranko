@@ -331,6 +331,10 @@ body.modal-open {
   top: -38px;
 }
 
+.errors{
+  color: red;
+}
+
 
 /* 投稿内容を入力してくださいのフォームの部分 */
 .formcontent{

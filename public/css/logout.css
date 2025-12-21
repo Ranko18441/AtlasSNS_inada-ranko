@@ -96,7 +96,7 @@ input, textarea, select {
 
 .social{
    width: 200px;
-   margin-left: 528px;
+   margin-left: 42%;
    transform: translateX(-90px); 
    font-size:  30px; 
    white-space: nowrap;  /*文字を折り返さないようにした*/
