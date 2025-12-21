@@ -60,13 +60,26 @@ html,body{
 }
 
 .custom-form{
-    background-color: red;
+    background-color: #ED3A50;
     color: #FFFFFF;
     text-align: 20px;
     width: 100px;
     height: 40px;
     margin: 15px 154px 30px;  /* ↓、→　下の物体が下に行く　*/
     border-radius: 10px;
+}
+
+.addcustom-form{
+    background-color: #ED3A50;
+    color: #FFFFFF;
+    width: 121px;
+    height: 31px;
+    margin: 30% 21%;
+    border-radius: 7px;
+}
+
+.addcustom-form a {
+  text-decoration: none;
 }
 
 

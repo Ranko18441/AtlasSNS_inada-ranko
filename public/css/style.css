@@ -415,8 +415,8 @@ top: 5px;
 /* 他ユーザーの投稿したポストと名前 */
 .seconduserspost{
  position: relative;
- left:70px;
- bottom:65px;
+ left: 8%;
+ bottom: 49px;
 }
 
 /* 他ユーザーの投稿した時の時間 */
@@ -606,7 +606,7 @@ a:hover {
 /* otherprofile.blade.phpのcss */
 .posting-content{
   position: relative; 
-  left: 60px;
+  left: 8%;
   bottom: 44px; 
   height: 1px;
 }
@@ -627,7 +627,7 @@ a:hover {
   display:flex;
   gap: 0px 50px;
   position: relative; 
-  left: 75px;
+  left: 7%;
   bottom: 70px; 
 }
 
@@ -635,6 +635,6 @@ a:hover {
  display:flex;
  gap: 0px 62px;
  position: relative; 
- left: 75px;
+ left: 7%;
  bottom: 70px; 
 }

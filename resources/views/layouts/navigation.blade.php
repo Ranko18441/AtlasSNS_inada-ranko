@@ -1,7 +1,11 @@
     
       <h1 class="banner"><a href="{{ route('top') }}"><img src="{{ asset('images/atlas.png')}}" class="banner-img"></a>
        <!-- ユーザーのアイコン表示 -->
-      <img src="{{ asset('storage/icons/'.auth()->user()->icon_image) }}" alt="icon" width="32" height="32" class="banner_icon">
+    @if (Auth::user()->icon_image != "icon1.png")
+    <img src="{{ asset('storage/icons/'.Auth::user()->icon_image) }}" alt="アイコン" width="50" height="50" class="banner_icon">
+    @else
+    <img src="{{ asset('images/' . Auth::user()->icon_image) }}" alt="アイコン" width="50" height="50" class="banner_icon">
+    @endif
       
       
       
