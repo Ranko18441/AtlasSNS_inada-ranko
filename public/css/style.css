@@ -618,10 +618,6 @@ a:hover {
 }
 
 
-
-
-
-
 /* otherprofile.blade.phpのcss left: 75px; bottom: 70px;にしたいがしたらフォローするボタンが押せなくなる  */
 .otherusername{
   display:flex;
