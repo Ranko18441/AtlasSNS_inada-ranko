@@ -26,13 +26,13 @@
     
     <div class="fouserspost">
         <!-- 結合演算子 （けつごうえんざんし）　変数と文字列をつなげたいときに持ってくるやり方　変数のものをイメージと繋げる-->
-        <img src="{{ asset('storage/icons/' . $post-> user -> icon_image) }}" alt="アイコン"width="50" height="50" class="icon">
         <div class="seconduserspost">
+        <img src="{{ asset('storage/icons/' . $post-> user -> icon_image) }}" alt="アイコン"width="50" height="50" class="icon">
         <span>{{ $post-> user -> username }}</span>
+        <p ><small>{{ $post->created_at->format('Y-m-d H:i:s') }}</small></p>
+         </div>
         <p>投稿内容：{!! nl2br(htmlspecialchars($post->post)) !!}</p>
-        </div>
        </div>
-        <p class="followpost-time"><small>{{ $post->created_at->format('Y-m-d H:i:s') }}</small></p>
         <hr  style="border: solid #E0E0E0 ;">
         @endforeach
 

@@ -407,22 +407,17 @@ top: 5px;
 
 /* 他ユーザエーの大枠の投稿したポスト */
 .fouserspost{
-  position: relative;
-  left:70px;
-  top:30px;
+ 
 }
 
 /* 他ユーザーの投稿したポストと名前 */
 .seconduserspost{
- position: relative;
- left: 8%;
- bottom: 49px;
+  display: flex;
+  justify-content: space-between
 }
 
-/* 他ユーザーの投稿した時の時間 */
-.followpost-time{
-  float: right;
-  margin-top: -100px;
+.fouserspost span{
+  margin-right: 74%;
 }
 
 /* フォローリストとフォロワーリストのボタン*/
